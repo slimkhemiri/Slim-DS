@@ -25,6 +25,12 @@ export function Header({ theme, setTheme }: HeaderProps) {
       </div>
       <div className="headerCenter">
         <Link
+          to="/"
+          className={`navLink ${isActive("/") ? "active" : ""}`}
+        >
+          🏠 Home
+        </Link>
+        <Link
           to="/components"
           className={`navLink ${isActive("/components") ? "active" : ""}`}
         >
