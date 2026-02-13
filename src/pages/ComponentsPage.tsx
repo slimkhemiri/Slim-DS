@@ -1,6 +1,5 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { SlimPlaygroundSidebar } from "@slimkhemiri/react-design-system";
 import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../demos";
 import { useSidebarCollapse } from "../hooks";
 import { menuItems } from "../constants";
@@ -60,14 +59,53 @@ export function ComponentsPage() {
   return (
     <div className="componentsPageLayout">
       <div className={`componentsPageSidebar ${sidebarCollapsed ? "collapsed" : ""}`}>
-        <SlimPlaygroundSidebar
-          heading="Components"
-          items={menuItems}
-          active={demo}
-          collapsed={sidebarCollapsed}
-          onSlimToggle={(e: CustomEvent<boolean>) => setSidebarCollapsed(e.detail)}
-          onSlimSelect={(e: CustomEvent<string>) => setSearchParams({ demo: e.detail })}
-        />
+        <div className="sidebarHeader">
+          <h2 className="sidebarTitle">Components</h2>
+          <button 
+            className="sidebarToggle" 
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {sidebarCollapsed ? (
+                <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+              ) : (
+                <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        <nav className="sidebarNav">
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              className={`sidebarNavItem ${demo === item.id ? "active" : ""}`}
+              onClick={() => setSearchParams({ demo: item.id })}
+              title={item.label}
+            >
+              <svg 
+                className="sidebarNavIcon" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor"
+              >
+                {item.icon.map((path, idx) => (
+                  <path
+                    key={idx}
+                    d={path.d}
+                    strokeWidth={path.strokeWidth || 2}
+                    strokeLinecap={path.strokeLinecap || "round"}
+                    strokeLinejoin={path.strokeLinejoin || "round"}
+                  />
+                ))}
+              </svg>
+              <span className="sidebarNavLabel">{item.label}</span>
+            </button>
+          ))}
+        </nav>
       </div>
 
       <div className="componentsPageContent">
