@@ -142,43 +142,6 @@ section {
   gap: 24px;
 }
 
-.codeBlock {
-  background: var(--sl-surface-3);
-  border: 1px solid var(--sl-border);
-  border-radius: var(--sl-radius-2);
-  overflow: hidden;
-}
-
-.codeBlockHeader {
-  background: var(--sl-surface-2);
-  border-bottom: 1px solid var(--sl-border);
-  padding: 12px 20px;
-}
-
-.codeBlockTitle {
-  font-size: 13px;
-  font-weight: var(--sl-font-weight-bold);
-  color: var(--sl-text-light);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.codeBlockContent {
-  margin: 0;
-  padding: 20px;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--sl-text);
-  overflow-x: auto;
-}
-
-.codeBlockContent code {
-  font-family: inherit;
-  background: none;
-  padding: 0;
-}
-
 /* Components Preview */
 .componentsPreview {
   background: var(--sl-surface-2);

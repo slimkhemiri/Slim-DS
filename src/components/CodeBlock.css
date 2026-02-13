@@ -1,0 +1,138 @@
+/* Code Block Component */
+.codeBlock {
+  background: var(--sl-surface-3);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-2);
+  overflow: hidden;
+}
+
+.codeBlockHeader {
+  background: var(--sl-surface-2);
+  border-bottom: 1px solid var(--sl-border);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.codeBlockTitle {
+  font-size: 13px;
+  font-weight: var(--sl-font-weight-bold);
+  color: var(--sl-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+.codeBlockContent {
+  margin: 0;
+  padding: 20px;
+  font-family: var(--ant-font-family-code);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--sl-text);
+  overflow-x: auto;
+}
+
+.codeBlockContent code {
+  font-family: inherit;
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+/* Copy Button - Regular Size */
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--sl-surface);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-1);
+  color: var(--sl-text);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.copyButton:hover {
+  background: var(--sl-primary-soft);
+  border-color: var(--sl-primary);
+  color: var(--sl-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(88, 29, 116, 0.15);
+}
+
+.copyButton:active {
+  transform: translateY(0);
+}
+
+.copyButton.copied {
+  background: var(--sl-primary);
+  border-color: var(--sl-primary);
+  color: white;
+  pointer-events: none;
+}
+
+.copyButton svg {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.copyButton:hover svg {
+  transform: scale(1.1);
+}
+
+.copyButton.copied svg {
+  animation: checkBounce 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Copy Button - Small Size (for inline use) */
+.copyButtonSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: var(--sl-surface);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-1);
+  color: var(--sl-muted);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  vertical-align: middle;
+}
+
+.copyButtonSmall:hover {
+  background: var(--sl-primary-soft);
+  border-color: var(--sl-primary);
+  color: var(--sl-primary);
+  transform: scale(1.1);
+}
+
+.copyButtonSmall:active {
+  transform: scale(0.95);
+}
+
+.copyButtonSmall.copied {
+  background: var(--sl-primary);
+  border-color: var(--sl-primary);
+  color: white;
+}
+
+.copyButtonSmall svg {
+  display: block;
+}
+
+@keyframes checkBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

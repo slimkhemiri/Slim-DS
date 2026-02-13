@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
+import { CodeBlock } from "../components";
 import "./HomePage.css";
 
 export function HomePage() {
@@ -104,27 +105,21 @@ export function HomePage() {
         </div>
 
         <div className="quickStartContent">
-          <div className="codeBlock">
-            <div className="codeBlockHeader">
-              <span className="codeBlockTitle">Install via NPM</span>
-            </div>
-            <pre className="codeBlockContent">
-              <code>npm install @slimkhemiri/react-design-system</code>
-            </pre>
-          </div>
+          <CodeBlock
+            title="Install via NPM"
+            code="npm install @slimkhemiri/react-design-system"
+            language="bash"
+          />
 
-          <div className="codeBlock">
-            <div className="codeBlockHeader">
-              <span className="codeBlockTitle">Import and Use</span>
-            </div>
-            <pre className="codeBlockContent">
-              <code>{`import { SlimButton } from "@slimkhemiri/react-design-system";
+          <CodeBlock
+            title="Import and Use"
+            code={`import { SlimButton } from "@slimkhemiri/react-design-system";
 
 function App() {
   return <SlimButton variant="primary">Click me</SlimButton>;
-}`}</code>
-            </pre>
-          </div>
+}`}
+            language="tsx"
+          />
         </div>
       </section>
 

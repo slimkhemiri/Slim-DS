@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { CodeBlock } from "./components";
 
 export function Documentation() {
   return (
@@ -51,24 +52,15 @@ export function Documentation() {
         <h3 style={{ fontSize: "18px", fontWeight: "var(--sl-font-weight-bold)", marginTop: "24px", marginBottom: "12px", color: "var(--sl-text)" }}>
           Installation
         </h3>
-        <pre
-          style={{
-            background: "var(--sl-surface-2)",
-            padding: "16px",
-            borderRadius: "var(--sl-radius-1)",
-            border: "1px solid var(--sl-border)",
-            overflow: "auto",
-            fontSize: "14px",
-          }}
-        >
-          <code style={{ color: "var(--sl-text)" }}>
-{`# Install with npm
+        <CodeBlock
+          title="Install with NPM or PNPM"
+          code={`# Install with npm
 npm install @slimkhemiri/react-design-system
 
 # Or with pnpm
 pnpm add @slimkhemiri/react-design-system`}
-          </code>
-        </pre>
+          language="bash"
+        />
         <div style={{ marginTop: "12px", padding: "12px", background: "var(--sl-info-soft)", border: "1px solid var(--sl-info)", borderRadius: "var(--sl-radius-1)" }}>
           <div style={{ fontSize: "13px", color: "var(--sl-text)", lineHeight: "1.6" }}>
             <strong>💡 Note:</strong> The design tokens are automatically included as a dependency. No need to install them separately!
@@ -81,18 +73,9 @@ pnpm add @slimkhemiri/react-design-system`}
         <p style={{ color: "var(--sl-text-light)", marginBottom: "16px", lineHeight: "1.6" }}>
           Start using components right away with minimal setup:
         </p>
-        <pre
-          style={{
-            background: "var(--sl-surface-2)",
-            padding: "16px",
-            borderRadius: "var(--sl-radius-1)",
-            border: "1px solid var(--sl-border)",
-            overflow: "auto",
-            fontSize: "14px",
-          }}
-        >
-          <code style={{ color: "var(--sl-text)" }}>
-{`// Import components
+        <CodeBlock
+          title="Basic Usage Example"
+          code={`// Import components
 import { SlimButton, SlimInput } from '@slimkhemiri/react-design-system';
 
 function App() {
@@ -103,8 +86,8 @@ function App() {
     </div>
   );
 }`}
-          </code>
-        </pre>
+          language="tsx"
+        />
 
         <h3 style={{ fontSize: "18px", fontWeight: "var(--sl-font-weight-bold)", marginTop: "24px", marginBottom: "12px", color: "var(--sl-text)" }}>
           Using Design Tokens
@@ -112,18 +95,9 @@ function App() {
         <p style={{ color: "var(--sl-text-light)", marginBottom: "16px", lineHeight: "1.6" }}>
           Access design tokens in JavaScript for advanced customization:
         </p>
-        <pre
-          style={{
-            background: "var(--sl-surface-2)",
-            padding: "16px",
-            borderRadius: "var(--sl-radius-1)",
-            border: "1px solid var(--sl-border)",
-            overflow: "auto",
-            fontSize: "14px",
-          }}
-        >
-          <code style={{ color: "var(--sl-text)" }}>
-{`// Import components and tokens
+        <CodeBlock
+          title="Using Design Tokens"
+          code={`// Import components and tokens
 import { SlimButton, SlimInput } from '@slimkhemiri/react-design-system';
 import { tokens } from '@slimkhemiri/tokens';
 
@@ -145,8 +119,8 @@ function App() {
     </div>
   );
 }`}
-          </code>
-        </pre>
+          language="tsx"
+        />
 
         <div style={{ marginTop: "16px", padding: "16px", background: "var(--sl-info-soft)", border: "1px solid var(--sl-info)", borderRadius: "var(--sl-radius-1)" }}>
           <div style={{ fontSize: "14px", color: "var(--sl-text)", lineHeight: "1.6" }}>
