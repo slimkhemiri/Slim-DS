@@ -10,6 +10,8 @@
 /* Components Search */
 .componentsSearch {
   margin-bottom: 48px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .searchHeader {
@@ -40,6 +42,8 @@
   position: relative;
   max-width: 600px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .searchIcon {
@@ -49,6 +53,7 @@
   transform: translateY(-50%);
   color: var(--sl-muted);
   pointer-events: none;
+  z-index: 1;
 }
 
 .searchInput {
@@ -62,6 +67,7 @@
   color: var(--sl-text);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 .searchInput:focus {
@@ -408,6 +414,10 @@
     padding: 20px 16px;
   }
 
+  .componentsSearch {
+    margin-bottom: 32px;
+  }
+
   .searchHeader {
     margin-bottom: 24px;
     padding: 0 16px;
@@ -422,12 +432,80 @@
     font-size: 16px;
   }
 
+  .searchInputWrapper {
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .searchIcon {
+    left: 16px;
+    width: 18px;
+    height: 18px;
+  }
+
   .searchInput {
-    padding: 14px 44px 14px 44px;
+    padding: 14px 40px 14px 50px;
+    font-size: 15px;
+    border-radius: 50px;
+  }
+
+  .searchInput::placeholder {
+    font-size: 14px;
+  }
+
+  .searchClear {
+    right: 12px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .searchClear svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .searchTitle {
+    font-size: 24px;
+  }
+
+  .searchDescription {
     font-size: 14px;
   }
 
   .searchInputWrapper {
-    max-width: 100%;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .searchIcon {
+    left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .searchInput {
+    padding: 12px 36px 12px 44px;
+    font-size: 14px;
+  }
+
+  .searchInput::placeholder {
+    font-size: 13px;
+  }
+
+  .searchClear {
+    right: 12px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .searchClear svg {
+    width: 12px;
+    height: 12px;
   }
 }
