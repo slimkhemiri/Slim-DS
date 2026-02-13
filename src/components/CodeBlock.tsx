@@ -1,14 +1,18 @@
 import React from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./CodeBlock.css";
 
 interface CodeBlockProps {
   title: string;
   code: string;
   language?: string;
+  defaultExpanded?: boolean;
 }
 
-export function CodeBlock({ title, code, language = "bash" }: CodeBlockProps) {
+export function CodeBlock({ title, code, language = "bash", defaultExpanded = false }: CodeBlockProps) {
   const [copied, setCopied] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(defaultExpanded);
 
   const handleCopy = async () => {
     try {
@@ -20,10 +24,36 @@ export function CodeBlock({ title, code, language = "bash" }: CodeBlockProps) {
     }
   };
 
+  // Map language aliases to proper Prism language codes
+  const languageMap: Record<string, string> = {
+    "tsx": "tsx",
+    "typescript": "typescript",
+    "jsx": "jsx",
+    "javascript": "javascript",
+    "bash": "bash",
+    "shell": "bash",
+    "css": "css",
+    "html": "markup",
+    "json": "json",
+  };
+
+  const prismLanguage = languageMap[language] || language;
+
   return (
-    <div className="codeBlock">
+    <div className={`codeBlock ${expanded ? 'expanded' : 'collapsed'}`}>
       <div className="codeBlockHeader">
-        <span className="codeBlockTitle">{title}</span>
+        <div className="codeBlockHeaderLeft">
+          <button
+            className="expandButton"
+            onClick={() => setExpanded(!expanded)}
+            aria-label={expanded ? "Collapse code" : "Expand code"}
+            title={expanded ? "Collapse code" : "Expand code"}
+          >
+            <span className="codeIcon">&lt;/&gt;</span>
+          </button>
+          <span className="codeBlockTitle">{title}</span>
+          <span className="codeLanguageBadge">{language}</span>
+        </div>
         <button 
           className={`copyButton ${copied ? 'copied' : ''}`}
           onClick={handleCopy}
@@ -47,9 +77,27 @@ export function CodeBlock({ title, code, language = "bash" }: CodeBlockProps) {
           )}
         </button>
       </div>
-      <pre className="codeBlockContent">
-        <code>{code}</code>
-      </pre>
+      {expanded && (
+        <SyntaxHighlighter
+          language={prismLanguage}
+          style={vscDarkPlus}
+          customStyle={{
+            margin: 0,
+            padding: "20px",
+            fontSize: "14px",
+            lineHeight: "1.8",
+            borderRadius: 0,
+            background: "#1e1e1e",
+          }}
+          codeTagProps={{
+            style: {
+              fontFamily: "var(--ant-font-family-code)",
+            }
+          }}
+        >
+          {code}
+        </SyntaxHighlighter>
+      )}
     </div>
   );
 }

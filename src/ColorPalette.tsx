@@ -1,4 +1,4 @@
-import { CopyButton } from "./components";
+import { CopyButton, Footer } from "./components";
 
 interface ColorSwatchProps {
   name: string;
@@ -105,7 +105,8 @@ function ColorSection({ title, colors }: ColorSectionProps) {
 
 export function ColorPalette() {
   return (
-    <div style={{ padding: "24px", maxWidth: "1400px", margin: "0 auto" }}>
+    <div className="colorPalettePage" style={{ width: "100%", maxWidth: "100%", overflowX: "hidden" }}>
+      <div style={{ padding: "24px", maxWidth: "1400px", margin: "0 auto" }}>
       <h1
         style={{
           fontSize: "32px",
@@ -206,6 +207,9 @@ export function ColorPalette() {
           { name: "Warning Soft", cssVar: "--sl-warning-soft", colorValue: "var(--sl-warning-soft)" },
         ]}
       />
+      </div>
+      
+      <Footer />
     </div>
   );
 }

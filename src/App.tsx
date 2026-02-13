@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Header } from "./components";
+import { Header, Footer } from "./components";
 import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage } from "./pages";
 
 export function App() {

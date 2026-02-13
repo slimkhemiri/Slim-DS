@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { CodeBlock } from "../components";
+import { CodeBlock, Footer } from "../components";
 import "./HomePage.css";
 
 export function HomePage() {
@@ -226,6 +226,8 @@ function App() {
           </a>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 }

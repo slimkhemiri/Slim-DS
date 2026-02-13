@@ -4,6 +4,16 @@
   border: 1px solid var(--sl-border);
   border-radius: var(--sl-radius-2);
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.codeBlock.collapsed {
+  border-color: var(--sl-border);
+}
+
+.codeBlock.expanded {
+  border-color: var(--sl-primary);
+  box-shadow: 0 4px 20px rgba(88, 29, 116, 0.12);
 }
 
 .codeBlockHeader {
@@ -16,30 +26,80 @@
   gap: 16px;
 }
 
-.codeBlockTitle {
-  font-size: 13px;
-  font-weight: var(--sl-font-weight-bold);
-  color: var(--sl-text-light);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.codeBlock.collapsed .codeBlockHeader {
+  border-bottom: none;
+}
+
+.codeBlockHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex: 1;
 }
 
-.codeBlockContent {
-  margin: 0;
-  padding: 20px;
-  font-family: var(--ant-font-family-code);
-  font-size: 14px;
-  line-height: 1.6;
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: transparent;
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-1);
   color: var(--sl-text);
-  overflow-x: auto;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.codeBlockContent code {
-  font-family: inherit;
-  background: none;
-  padding: 0;
-  border: none;
+.expandButton:hover {
+  background: var(--sl-primary-soft);
+  border-color: var(--sl-primary);
+  color: var(--sl-primary);
+  transform: scale(1.05);
+}
+
+.codeIcon {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--ant-font-family-code);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expandButton:hover .codeIcon {
+  transform: scale(1.1);
+}
+
+.codeBlockTitle {
+  font-size: 13px;
+  font-weight: var(--sl-font-weight-bold);
+  color: var(--sl-text);
+  flex: 1;
+}
+
+.codeLanguageBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sl-primary);
+  background: var(--sl-primary-soft);
+  padding: 2px 8px;
+  border-radius: var(--sl-radius-1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* SyntaxHighlighter wrapper animation */
+.codeBlock.expanded > div:last-child {
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Copy Button - Regular Size */

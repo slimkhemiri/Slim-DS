@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CodeBlock } from "./components";
+import { CodeBlock, Footer } from "./components";
 
 export function Documentation() {
   return (
-    <>
+    <div className="documentationPage">
       <style>{`
+        .documentationPage {
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
+        }
         .resourceCardHover:hover {
           transform: translateY(-4px);
           box-shadow: var(--sl-shadow-1);
@@ -654,6 +659,8 @@ document.documentElement.dataset.theme = 'hc';`}
         </div>
       </section>
       </div>
-    </>
+      
+      <Footer />
+    </div>
   );
 }
