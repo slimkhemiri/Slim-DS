@@ -32,7 +32,6 @@
   font-weight: var(--sl-font-weight-bold);
   color: var(--sl-text);
   margin: 0;
-  line-height: 1.1;
   background: linear-gradient(135deg, var(--sl-primary) 0%, var(--sl-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
