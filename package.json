@@ -10,7 +10,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@slimkhemiri/react-design-system": "^0.1.11",
+    "@slimkhemiri/react-design-system": "^0.1.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.13.0"

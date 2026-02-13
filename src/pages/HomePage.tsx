@@ -9,7 +9,7 @@ export function HomePage() {
       {/* Hero Section */}
       <section className="hero">
         <div className="heroContent">
-          <SlimBadge variant="primary" size="sm">v0.1.10</SlimBadge>
+          <SlimBadge variant="primary" size="sm">v0.1.13</SlimBadge>
           <h1 className="heroTitle">
             Slim Design System
           </h1>
