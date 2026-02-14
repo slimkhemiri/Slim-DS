@@ -177,7 +177,7 @@ export function ProfilePage() {
                     Premium
                   </SlimBadge>
                 ) : (
-                  <SlimBadge variant="secondary" size="sm">
+                  <SlimBadge variant="neutral" size="sm">
                     Free
                   </SlimBadge>
                 )}
