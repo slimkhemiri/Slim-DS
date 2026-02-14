@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer } from "./components";
+import { ScrollToTop } from "./components/ScrollToTop";
 import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage } from "./pages";
 import { IconsPage } from "./pages/IconsPage";
 import { ThemesPage } from "./pages/ThemesPage";
@@ -15,6 +16,7 @@ export function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="page">
         <Header theme={theme} setTheme={setTheme} />
         <Routes>
