@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
 import { CodeBlock, Footer, SEO } from "../components";
+import { useAuth } from "../contexts/AuthContext";
 import "./HomePage.css";
 
 export function HomePage() {
+  const { user } = useAuth();
+
   return (
     <>
       <SEO
@@ -39,7 +42,30 @@ export function HomePage() {
                 View on NPM
               </SlimButton>
             </a>
+            <Link to="/pricing">
+              <SlimButton variant="secondary" size="lg">
+                Go Premium
+              </SlimButton>
+            </Link>
           </div>
+          
+          {!user && (
+            <div className="heroAuth">
+              <p className="heroAuthText">Already have an account?</p>
+              <div className="heroAuthButtons">
+                <Link to="/login">
+                  <SlimButton variant="secondary" size="md">
+                    Sign In
+                  </SlimButton>
+                </Link>
+                <Link to="/signup">
+                  <SlimButton variant="primary" size="md">
+                    Sign Up
+                  </SlimButton>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -191,6 +217,22 @@ function App() {
         </div>
       </section>
 
+      {/* Premium CTA */}
+      <section className="premiumCTA">
+        <div className="premiumCTAContent">
+          <SlimBadge variant="primary" size="sm">Premium</SlimBadge>
+          <h2 className="premiumCTATitle">Unlock Premium Features</h2>
+          <p className="premiumCTADescription">
+            Get access to advanced components, custom themes, API access, priority support, and more.
+          </p>
+          <Link to="/pricing">
+            <SlimButton variant="primary" size="lg">
+              View Pricing Plans
+            </SlimButton>
+          </Link>
+        </div>
+      </section>
+
       {/* Resources */}
       <section className="resources">
         <div className="sectionHeader">
@@ -215,6 +257,15 @@ function App() {
               Explore the color system and design tokens
             </p>
             <span className="resourceLink">View colors →</span>
+          </Link>
+
+          <Link to="/premium" className="resourceCard">
+            <div className="resourceIcon">⭐</div>
+            <h3 className="resourceTitle">Premium Features</h3>
+            <p className="resourceDescription">
+              Discover advanced features and tools
+            </p>
+            <span className="resourceLink">Explore premium →</span>
           </Link>
 
           <a

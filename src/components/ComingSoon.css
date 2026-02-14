@@ -1,0 +1,48 @@
+.comingSoon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: var(--sl-space-8, 32px);
+  background: var(--sl-surface, #ffffff);
+  border-radius: var(--sl-radius-lg, 8px);
+  border: 2px dashed var(--sl-border, #e0e0e0);
+}
+
+[data-theme="dark"] .comingSoon {
+  background: var(--sl-surface, #1a1a1a);
+  border-color: var(--sl-border, #333333);
+}
+
+.comingSoonContent {
+  text-align: center;
+  max-width: 500px;
+}
+
+.comingSoonIcon {
+  font-size: 64px;
+  margin-bottom: var(--sl-space-4, 16px);
+  line-height: 1;
+}
+
+.comingSoonTitle {
+  font-size: var(--sl-font-size-2xl, 24px);
+  font-weight: 600;
+  margin: 0 0 var(--sl-space-3, 12px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .comingSoonTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.comingSoonDescription {
+  font-size: var(--sl-font-size-base, 16px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .comingSoonDescription {
+  color: var(--sl-text-secondary, #999999);
+}

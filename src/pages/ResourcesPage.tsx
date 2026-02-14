@@ -1,8 +1,12 @@
 import React from "react";
-import { Footer } from "../components";
+import { Link } from "react-router-dom";
+import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
+import { Footer, PremiumGate } from "../components";
+import { useAuth } from "../contexts/AuthContext";
 import "./ResourcesPage.css";
 
 export function ResourcesPage() {
+  const { user } = useAuth();
   const designResources = [
     {
       title: "Sketch Symbols",
@@ -187,6 +191,122 @@ export function ResourcesPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Premium Features Section */}
+        <section className="resourcesSection">
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <h2 className="sectionTitle">Premium Features</h2>
+            <SlimBadge variant="primary" size="sm">Premium</SlimBadge>
+          </div>
+          <p className="sectionDescription">
+            Unlock exclusive premium resources and features available only to Pro and Enterprise subscribers.
+          </p>
+          
+          <PremiumGate featureName="Premium Resources">
+            <div className="resourcesGrid">
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">Hacker Mode Color Palette</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Exclusive dark green color palette with terminal-inspired aesthetics. Perfect for developer tools and security applications.
+                </p>
+                <Link to="/colors" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">View Colors</SlimButton>
+                </Link>
+              </div>
+
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">Advanced Component Library</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Access to premium components including data tables, advanced charts, calendars, and more complex UI patterns.
+                </p>
+                <Link to="/premium" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">Explore Features</SlimButton>
+                </Link>
+              </div>
+
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">Custom Theme Builder</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Visual theme builder tool to create and export custom themes with your brand colors and design tokens.
+                </p>
+                <Link to="/premium" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">Try Theme Builder</SlimButton>
+                </Link>
+              </div>
+
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">Design Token Export</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Export design tokens in multiple formats (JSON, CSS, SCSS, TypeScript) for seamless integration with your projects.
+                </p>
+                <Link to="/premium" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">Learn More</SlimButton>
+                </Link>
+              </div>
+
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">REST API Access</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Programmatic access to component documentation, design tokens, and system information via REST API.
+                </p>
+                <Link to="/premium" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">View API Docs</SlimButton>
+                </Link>
+              </div>
+
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">Priority Support</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Get faster response times, dedicated support channels, and direct access to the development team.
+                </p>
+                <Link to="/pricing" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">Upgrade Now</SlimButton>
+                </Link>
+              </div>
+            </div>
+          </PremiumGate>
+
+          {!user?.isPremium && (
+            <div style={{ 
+              marginTop: "32px", 
+              padding: "32px", 
+              background: "linear-gradient(135deg, var(--sl-primary, #581d74) 0%, rgba(88, 29, 116, 0.9) 100%)",
+              borderRadius: "var(--sl-radius-2)",
+              textAlign: "center",
+              color: "white"
+            }}>
+              <h3 style={{ fontSize: "24px", fontWeight: "600", margin: "0 0 12px 0" }}>
+                Unlock Premium Resources
+              </h3>
+              <p style={{ fontSize: "16px", margin: "0 0 24px 0", opacity: 0.9 }}>
+                Get access to all premium features, exclusive color palettes, advanced components, and priority support.
+              </p>
+              <Link to="/pricing">
+                <SlimButton variant="secondary" size="lg" style={{ background: "white", color: "var(--sl-primary)" }}>
+                  View Pricing Plans
+                </SlimButton>
+              </Link>
+            </div>
+          )}
         </section>
       </div>
       <Footer />

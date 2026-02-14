@@ -1,0 +1,256 @@
+.pricingPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sl-space-8, 32px) var(--sl-space-4, 16px);
+}
+
+.pricingHeader {
+  text-align: center;
+  margin-bottom: var(--sl-space-10, 48px);
+}
+
+.pricingTitle {
+  font-size: var(--sl-font-size-4xl, 36px);
+  font-weight: 700;
+  margin: 0 0 var(--sl-space-4, 16px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingSubtitle {
+  font-size: var(--sl-font-size-lg, 18px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-theme="dark"] .pricingSubtitle {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--sl-space-6, 24px);
+  margin-bottom: var(--sl-space-12, 64px);
+}
+
+.pricingCard {
+  position: relative;
+  background: var(--sl-surface, #ffffff);
+  border: 2px solid var(--sl-border, #e0e0e0);
+  border-radius: var(--sl-radius-lg, 8px);
+  padding: var(--sl-space-6, 24px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+[data-theme="dark"] .pricingCard {
+  background: var(--sl-surface, #1a1a1a);
+  border-color: var(--sl-border, #333333);
+}
+
+.pricingCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .pricingCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.pricingCard.popular {
+  border-color: var(--sl-primary, #581d74);
+  border-width: 3px;
+}
+
+.pricingCard.current {
+  background: var(--sl-primary, #581d74);
+  background: linear-gradient(135deg, var(--sl-primary, #581d74) 0%, rgba(88, 29, 116, 0.8) 100%);
+  color: white;
+}
+
+.pricingBadge {
+  position: absolute;
+  top: var(--sl-space-4, 16px);
+  right: var(--sl-space-4, 16px);
+}
+
+.pricingCurrent {
+  position: absolute;
+  top: var(--sl-space-4, 16px);
+  right: var(--sl-space-4, 16px);
+}
+
+.pricingCardHeader {
+  margin-bottom: var(--sl-space-6, 24px);
+}
+
+.pricingCardTitle {
+  font-size: var(--sl-font-size-2xl, 24px);
+  font-weight: 600;
+  margin: 0 0 var(--sl-space-2, 8px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingCardTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingCard.current .pricingCardTitle {
+  color: white;
+}
+
+.pricingCardDescription {
+  font-size: var(--sl-font-size-base, 16px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+}
+
+[data-theme="dark"] .pricingCardDescription {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.pricingCard.current .pricingCardDescription {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.pricingCardPrice {
+  margin-bottom: var(--sl-space-6, 24px);
+  padding-bottom: var(--sl-space-6, 24px);
+  border-bottom: 1px solid var(--sl-border, #e0e0e0);
+}
+
+[data-theme="dark"] .pricingCardPrice {
+  border-bottom-color: var(--sl-border, #333333);
+}
+
+.pricingCard.current .pricingCardPrice {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.pricingPriceAmount {
+  font-size: var(--sl-font-size-4xl, 36px);
+  font-weight: 700;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingPriceAmount {
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingCard.current .pricingPriceAmount {
+  color: white;
+}
+
+.pricingPriceInterval {
+  font-size: var(--sl-font-size-lg, 18px);
+  font-weight: 400;
+  color: var(--sl-text-secondary, #666666);
+}
+
+[data-theme="dark"] .pricingPriceInterval {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.pricingCard.current .pricingPriceInterval {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pricingFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--sl-space-6, 24px) 0;
+  flex-grow: 1;
+}
+
+.pricingFeature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sl-space-3, 12px);
+  margin-bottom: var(--sl-space-3, 12px);
+  font-size: var(--sl-font-size-base, 16px);
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingFeature {
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingCard.current .pricingFeature {
+  color: white;
+}
+
+.pricingFeatureIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--sl-primary, #581d74);
+}
+
+.pricingCard.current .pricingFeatureIcon {
+  color: white;
+}
+
+.pricingCardActions {
+  margin-top: auto;
+}
+
+.pricingFAQ {
+  margin-top: var(--sl-space-12, 64px);
+  padding-top: var(--sl-space-12, 64px);
+  border-top: 1px solid var(--sl-border, #e0e0e0);
+}
+
+[data-theme="dark"] .pricingFAQ {
+  border-top-color: var(--sl-border, #333333);
+}
+
+.pricingFAQTitle {
+  font-size: var(--sl-font-size-2xl, 24px);
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 var(--sl-space-8, 32px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingFAQTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingFAQGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sl-space-6, 24px);
+}
+
+.pricingFAQItem {
+  padding: var(--sl-space-4, 16px);
+}
+
+.pricingFAQQuestion {
+  font-size: var(--sl-font-size-lg, 18px);
+  font-weight: 600;
+  margin: 0 0 var(--sl-space-2, 8px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingFAQQuestion {
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingFAQAnswer {
+  font-size: var(--sl-font-size-base, 16px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .pricingFAQAnswer {
+  color: var(--sl-text-secondary, #999999);
+}

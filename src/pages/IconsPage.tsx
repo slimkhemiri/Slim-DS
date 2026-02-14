@@ -13,7 +13,12 @@ export function IconsPage() {
               <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <h1 className="comingSoonTitle">Slim Icons</h1>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginBottom: "16px", flexWrap: "wrap" }}>
+            <h1 className="comingSoonTitle" style={{ margin: 0 }}>Slim Icons</h1>
+            <span className="iconsComingSoonBadge">
+              COMING SOON
+            </span>
+          </div>
           <p className="comingSoonDescription">
             A comprehensive icon library is <strong style={{ color: "var(--sl-primary)" }}>coming soon</strong>. Stay tuned for beautiful, 
             consistent icons designed for the Slim Design System.

@@ -51,6 +51,89 @@ body {
   background: rgba(0, 0, 0, 0.98);
 }
 
+/* Hacker Mode Theme (Premium) */
+[data-theme="hacker"] {
+  /* Hacker Green Palette */
+  --sl-hacker-green-50: #0a1f0a;
+  --sl-hacker-green-100: #0d2e0d;
+  --sl-hacker-green-200: #0f3d0f;
+  --sl-hacker-green-300: #124c12;
+  --sl-hacker-green-400: #155b15;
+  --sl-hacker-green-500: #00ff41;
+  --sl-hacker-green-600: #00cc34;
+  --sl-hacker-green-700: #00b32d;
+  --sl-hacker-green-800: #009926;
+  --sl-hacker-green-900: #008020;
+
+  /* Terminal Colors */
+  --sl-hacker-bg: #0a1f0a;
+  --sl-hacker-text: #00ff41;
+  --sl-hacker-accent: #00cc34;
+  --sl-hacker-border: #124c12;
+  --sl-hacker-success: #00ff41;
+  --sl-hacker-warning: #ffaa00;
+  --sl-hacker-error: #ff0040;
+  --sl-hacker-info: #00ccff;
+
+  /* Override main theme colors with hacker palette */
+  --sl-surface: var(--sl-hacker-bg);
+  --sl-surface-2: var(--sl-hacker-green-100);
+  --sl-surface-3: var(--sl-hacker-green-200);
+  --sl-text: var(--sl-hacker-text);
+  --sl-text-light: var(--sl-hacker-green-500);
+  --sl-text-secondary: var(--sl-hacker-green-600);
+  --sl-muted: var(--sl-hacker-green-400);
+  --sl-border: var(--sl-hacker-border);
+  --sl-border-light: var(--sl-hacker-green-300);
+  --sl-border-strong: var(--sl-hacker-green-500);
+  --sl-primary: var(--sl-hacker-green-500);
+  --sl-primary-hover: var(--sl-hacker-green-600);
+  --sl-primary-active: var(--sl-hacker-green-700);
+  --sl-primary-contrast: var(--sl-hacker-bg);
+  --sl-primary-soft: var(--sl-hacker-green-300);
+  --sl-success: var(--sl-hacker-success);
+  --sl-success-contrast: var(--sl-hacker-bg);
+  --sl-success-soft: var(--sl-hacker-green-300);
+  --sl-warning: var(--sl-hacker-warning);
+  --sl-warning-contrast: var(--sl-hacker-bg);
+  --sl-warning-soft: var(--sl-hacker-green-300);
+  --sl-danger: var(--sl-hacker-error);
+  --sl-danger-contrast: var(--sl-hacker-text);
+  --sl-danger-soft: var(--sl-hacker-green-300);
+  --sl-info: var(--sl-hacker-info);
+  --sl-info-contrast: var(--sl-hacker-bg);
+  --sl-info-soft: var(--sl-hacker-green-300);
+}
+
+[data-theme="hacker"] .header {
+  background: rgba(10, 31, 10, 0.98);
+  border-bottom-color: var(--sl-hacker-border);
+}
+
+[data-theme="hacker"] body {
+  background: var(--sl-hacker-bg);
+  color: var(--sl-hacker-text);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+[data-theme="hacker"] code,
+[data-theme="hacker"] pre {
+  background: var(--sl-hacker-green-100);
+  border-color: var(--sl-hacker-border);
+  color: var(--sl-hacker-text);
+}
+
+[data-theme="hacker"] .navLink:hover {
+  background: var(--sl-hacker-green-200);
+  color: var(--sl-hacker-green-500);
+}
+
+[data-theme="hacker"] .navLink.active {
+  background: var(--sl-hacker-green-300);
+  color: var(--sl-hacker-green-500);
+  box-shadow: 0 2px 8px rgba(0, 255, 65, 0.2);
+}
+
 /* Logo Section */
 .headerLeft {
   display: flex;
@@ -203,6 +286,15 @@ body {
   font-weight: 600;
 }
 
+.themeDropdownToggleIcon {
+  padding: 8px;
+  gap: 0;
+  justify-content: center;
+  min-width: 36px;
+  width: 36px;
+  height: 36px;
+}
+
 .themeDropdownToggle:hover {
   border-color: var(--sl-primary);
   background: var(--sl-surface);
@@ -336,6 +428,136 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* User Menu */
+.userMenu {
+  position: relative;
+  user-select: none;
+}
+
+.userMenuButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--sl-surface-2);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-2);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  color: var(--sl-text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.userMenuButtonIcon {
+  padding: 8px;
+  gap: 4px;
+  justify-content: center;
+  min-width: 36px;
+  width: auto;
+  height: 36px;
+  position: relative;
+}
+
+.userMenuPremiumIndicator {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-size: 12px;
+  line-height: 1;
+  background: var(--sl-primary, #581d74);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--sl-surface, #ffffff);
+}
+
+[data-theme="dark"] .userMenuPremiumIndicator {
+  border-color: var(--sl-surface, #1a1a1a);
+}
+
+.userMenuButton:hover {
+  border-color: var(--sl-primary);
+  background: var(--sl-surface);
+  box-shadow: 0 2px 12px rgba(88, 29, 116, 0.12);
+}
+
+.userMenuEmail {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userMenuButtonIcon .userMenuEmail {
+  display: none;
+}
+
+.userMenuDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--sl-surface);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.userMenuDropdown::before {
+  content: attr(data-user-email);
+  display: block;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--sl-text-secondary, #666666);
+  border-bottom: 1px solid var(--sl-border, #e0e0e0);
+  margin-bottom: 4px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .userMenuDropdown::before {
+  color: var(--sl-text-secondary, #999999);
+  border-bottom-color: var(--sl-border, #333333);
+}
+
+[data-theme="dark"] .userMenuDropdown {
+  background: #1a2332;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.userMenuItem {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  border-radius: var(--sl-radius-1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  color: var(--sl-text);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: left;
+}
+
+.userMenuItem:hover {
+  background: var(--sl-surface-2);
+  color: var(--sl-primary);
+  transform: translateX(4px);
 }
 
 /* Legacy styles for compatibility */
@@ -972,23 +1194,40 @@ pre code {
   }
 
   .themeDropdownToggle {
-    padding: 8px 12px;
-    gap: 6px;
+    padding: 8px;
+    gap: 0;
+  }
+
+  .themeDropdownToggleIcon {
+    padding: 6px;
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
   }
 
   .themeSwitchIcon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 
   .themeDropdownLabel {
-    font-size: 12px;
-    min-width: 85px;
+    display: none;
   }
 
   .themeSwitchArrow {
-    width: 10px;
-    height: 10px;
+    display: none;
+  }
+
+  .userMenuButtonIcon {
+    padding: 6px;
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .userMenuButtonIcon svg {
+    width: 18px;
+    height: 18px;
   }
 
   .themeDropdownMenu {

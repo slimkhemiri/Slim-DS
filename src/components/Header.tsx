@@ -1,15 +1,19 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
+import { useAuth } from "../contexts/AuthContext";
 import logoImage from "../icons/logo.png";
 
 interface HeaderProps {
-  theme: "light" | "dark" | "hc";
-  setTheme: (theme: "light" | "dark" | "hc") => void;
+  theme: "light" | "dark" | "hc" | "hacker";
+  setTheme: (theme: "light" | "dark" | "hc" | "hacker") => void;
 }
 
 export function Header({ theme, setTheme }: HeaderProps) {
   const location = useLocation();
+  const { user, logout } = useAuth();
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = React.useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = React.useState(false);
 
   const isActive = (path: string) => {
     if (path === "/components") {
@@ -24,36 +28,46 @@ export function Header({ theme, setTheme }: HeaderProps) {
     if (path === "/resources") {
       return location.pathname === "/resources";
     }
+    if (path === "/login") {
+      return location.pathname === "/login";
+    }
+    if (path === "/signup") {
+      return location.pathname === "/signup";
+    }
     return location.pathname === path;
   };
 
   const themeOptions = [
-    { value: "light", label: "Light", icon: "☀️" },
-    { value: "dark", label: "Dark", icon: "🌙" },
-    { value: "hc", label: "High Contrast", icon: "◐" }
+    { value: "light", label: "Light", icon: "☀️", premium: false },
+    { value: "dark", label: "Dark", icon: "🌙", premium: false },
+    { value: "hc", label: "High Contrast", icon: "◐", premium: false },
+    ...(user?.isPremium ? [{ value: "hacker", label: "Hacker Mode", icon: "💚", premium: true }] : [])
   ];
 
   const currentTheme = themeOptions.find(opt => opt.value === theme) || themeOptions[0];
 
-  const handleThemeSelect = (value: "light" | "dark" | "hc") => {
+  const handleThemeSelect = (value: "light" | "dark" | "hc" | "hacker") => {
     setTheme(value);
     setIsThemeDropdownOpen(false);
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   React.useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target.closest('.themeDropdown')) {
         setIsThemeDropdownOpen(false);
       }
+      if (!target.closest('.userMenu')) {
+        setIsUserMenuOpen(false);
+      }
     };
     
-    if (isThemeDropdownOpen) {
+    if (isThemeDropdownOpen || isUserMenuOpen) {
       document.addEventListener('click', handleClickOutside);
       return () => document.removeEventListener('click', handleClickOutside);
     }
-  }, [isThemeDropdownOpen]);
+  }, [isThemeDropdownOpen, isUserMenuOpen]);
 
   return (
     <header className="header" role="banner">
@@ -155,18 +169,81 @@ export function Header({ theme, setTheme }: HeaderProps) {
           </svg>
           <span>Resources</span>
         </Link>
+
+        {/* {!user && (
+          <>
+            <Link
+              to="/login"
+              className={`navLink ${isActive("/login") ? "active" : ""}`}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span>Login</span>
+            </Link>
+
+            <Link
+              to="/signup"
+              className={`navLink ${isActive("/signup") ? "active" : ""}`}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM19 8v6M22 11h-6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span>Sign Up</span>
+            </Link>
+          </>
+        )} */}
       </nav>
       
       <div className="headerRight">
+        {!user ? (
+          <Link to="/pricing" style={{ marginRight: "12px" }}>
+            <SlimButton variant="primary" size="sm">
+              Upgrade
+            </SlimButton>
+          </Link>
+        ) : (
+          <div className="userMenu" style={{ position: "relative", marginRight: "12px" }}>
+            <button
+              className="userMenuButton userMenuButtonIcon"
+              onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+              aria-label={`User menu - ${user.email}${user.isPremium ? ' (Premium)' : ''}`}
+              aria-expanded={isUserMenuOpen}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="7" r="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              {user.isPremium && (
+                <span className="userMenuPremiumIndicator" title="Premium User">⭐</span>
+              )}
+            </button>
+            {isUserMenuOpen && (
+              <div className="userMenuDropdown" data-user-email={user.email}>
+                <Link to="/premium" className="userMenuItem" onClick={() => setIsUserMenuOpen(false)}>
+                  Premium Features
+                </Link>
+                {!user.isPremium && (
+                  <Link to="/pricing" className="userMenuItem" onClick={() => setIsUserMenuOpen(false)}>
+                    Upgrade to Premium
+                  </Link>
+                )}
+                <button className="userMenuItem" onClick={() => { logout(); setIsUserMenuOpen(false); }}>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
         <div className={`themeDropdown ${isThemeDropdownOpen ? 'open' : ''}`}>
           <button 
-            className="themeDropdownToggle"
+            className="themeDropdownToggle themeDropdownToggleIcon"
             onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
             aria-label={`Current theme: ${currentTheme.label}. Click to change theme`}
             aria-expanded={isThemeDropdownOpen}
             aria-haspopup="true"
           >
-            <svg className="themeSwitchIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="themeSwitchIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {theme === "dark" ? (
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" strokeLinecap="round" strokeLinejoin="round"/>
               ) : theme === "hc" ? (
@@ -174,16 +251,18 @@ export function Header({ theme, setTheme }: HeaderProps) {
                   <circle cx="12" cy="12" r="10"/>
                   <path d="M12 2 L12 22" strokeLinecap="round"/>
                 </>
+              ) : theme === "hacker" ? (
+                <>
+                  <rect x="2" y="4" width="20" height="16" rx="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M6 8h12M6 12h8M6 16h4" strokeLinecap="round"/>
+                  <circle cx="18" cy="12" r="1" fill="currentColor"/>
+                </>
               ) : (
                 <>
                   <circle cx="12" cy="12" r="5"/>
                   <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" strokeLinecap="round"/>
                 </>
               )}
-            </svg>
-            <span className="themeDropdownLabel">{currentTheme.label}</span>
-            <svg className="themeSwitchArrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
           
@@ -196,13 +275,18 @@ export function Header({ theme, setTheme }: HeaderProps) {
               <button
                 key={option.value}
                 className={`themeDropdownItem ${theme === option.value ? 'active' : ''}`}
-                onClick={() => handleThemeSelect(option.value as "light" | "dark" | "hc")}
+                onClick={() => handleThemeSelect(option.value as "light" | "dark" | "hc" | "hacker")}
                 role="menuitem"
                 aria-label={`Switch to ${option.label} theme`}
                 aria-checked={theme === option.value}
               >
                 <span className="themeDropdownItemIcon">{option.icon}</span>
                 <span className="themeDropdownItemLabel">{option.label}</span>
+                {option.premium && (
+                  <SlimBadge variant="primary" size="sm" style={{ fontSize: "10px", padding: "2px 6px", marginLeft: "auto" }}>
+                    Premium
+                  </SlimBadge>
+                )}
                 {theme === option.value && (
                   <svg className="themeDropdownItemCheck" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>

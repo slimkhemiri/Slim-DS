@@ -1,6 +1,8 @@
 export interface ComponentMenuItem {
   id: string;
   label: string;
+  premium?: boolean;
+  comingSoon?: boolean;
   icon: Array<{
     d: string;
     strokeWidth?: number;
@@ -55,6 +57,33 @@ export const menuItems: ComponentMenuItem[] = [
       { d: "M12 21c5 0 9-4 9-9s-4-9-9-9-9 4-9 9 4 9 9 9Z" },
       { d: "M12 10v6", strokeLinecap: "round" },
       { d: "M12 7h.01", strokeWidth: 3, strokeLinecap: "round" },
+    ],
+  },
+  {
+    id: "tables",
+    label: "Data Tables",
+    comingSoon: true,
+    icon: [
+      { d: "M3 3h18v18H3V3Z", strokeLinejoin: "round" },
+      { d: "M3 9h18M9 3v18", strokeLinecap: "round" },
+    ],
+  },
+  {
+    id: "charts",
+    label: "Charts",
+    premium: true,
+    icon: [
+      { d: "M3 3v18h18", strokeLinecap: "round" },
+      { d: "M7 12l4-4 4 4 6-6", strokeLinecap: "round", strokeLinejoin: "round" },
+    ],
+  },
+  {
+    id: "cards",
+    label: "Premium Cards",
+    premium: true,
+    icon: [
+      { d: "M4 4h16v16H4V4Z", strokeLinejoin: "round" },
+      { d: "M4 8h16M8 4v16", strokeLinecap: "round" },
     ],
   },
 ];

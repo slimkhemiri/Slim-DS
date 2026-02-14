@@ -1,4 +1,4 @@
-import { CopyButton, Footer } from "./components";
+import { CopyButton, Footer, PremiumGate } from "./components";
 
 interface ColorSwatchProps {
   name: string;
@@ -207,6 +207,73 @@ export function ColorPalette() {
           { name: "Warning Soft", cssVar: "--sl-warning-soft", colorValue: "var(--sl-warning-soft)" },
         ]}
       />
+
+      <PremiumGate featureName="Hacker Mode Colors">
+        <div style={{ marginTop: "48px", padding: "24px", background: "var(--sl-surface-2)", borderRadius: "var(--sl-radius-2)", border: "2px solid var(--sl-primary)" }}>
+          <h3 style={{ fontSize: "18px", fontWeight: "var(--sl-font-weight-bold)", marginBottom: "12px", color: "var(--sl-text)", display: "flex", alignItems: "center", gap: "8px" }}>
+            <span>⭐</span> Premium: Hacker Mode Colors
+          </h3>
+          <p style={{ color: "var(--sl-text-light)", lineHeight: "1.6", marginBottom: "16px" }}>
+            Exclusive dark green color palette inspired by terminal and hacker aesthetics. Perfect for developer tools, security applications, and tech-focused interfaces.
+          </p>
+          <button
+            onClick={() => {
+              document.documentElement.dataset.theme = "hacker";
+              // Dispatch event to sync with App state
+              window.dispatchEvent(new CustomEvent('theme-change', { detail: 'hacker' }));
+            }}
+            style={{
+              padding: "10px 20px",
+              background: "var(--sl-primary)",
+              color: "var(--sl-primary-contrast)",
+              border: "none",
+              borderRadius: "var(--sl-radius-2)",
+              cursor: "pointer",
+              fontWeight: "600",
+              fontSize: "14px",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            Activate Hacker Mode
+          </button>
+        </div>
+
+        <ColorSection
+          title="💚 Hacker Mode - Green Palette (Premium)"
+          colors={[
+            { name: "Hacker Green 50", cssVar: "--sl-hacker-green-50", colorValue: "#0a1f0a", description: "Darkest green" },
+            { name: "Hacker Green 100", cssVar: "--sl-hacker-green-100", colorValue: "#0d2e0d", description: "Very dark green" },
+            { name: "Hacker Green 200", cssVar: "--sl-hacker-green-200", colorValue: "#0f3d0f", description: "Dark green" },
+            { name: "Hacker Green 300", cssVar: "--sl-hacker-green-300", colorValue: "#124c12", description: "Medium dark green" },
+            { name: "Hacker Green 400", cssVar: "--sl-hacker-green-400", colorValue: "#155b15", description: "Medium green" },
+            { name: "Hacker Green 500", cssVar: "--sl-hacker-green-500", colorValue: "#00ff41", description: "Bright terminal green" },
+            { name: "Hacker Green 600", cssVar: "--sl-hacker-green-600", colorValue: "#00cc34", description: "Saturated green" },
+            { name: "Hacker Green 700", cssVar: "--sl-hacker-green-700", colorValue: "#00b32d", description: "Deep green" },
+            { name: "Hacker Green 800", cssVar: "--sl-hacker-green-800", colorValue: "#009926", description: "Darker green" },
+            { name: "Hacker Green 900", cssVar: "--sl-hacker-green-900", colorValue: "#008020", description: "Darkest bright green" },
+          ]}
+        />
+
+        <ColorSection
+          title="🖥️ Hacker Mode - Terminal Colors (Premium)"
+          colors={[
+            { name: "Terminal Background", cssVar: "--sl-hacker-bg", colorValue: "#0a1f0a", description: "Terminal background" },
+            { name: "Terminal Text", cssVar: "--sl-hacker-text", colorValue: "#00ff41", description: "Terminal text color" },
+            { name: "Terminal Accent", cssVar: "--sl-hacker-accent", colorValue: "#00cc34", description: "Accent color" },
+            { name: "Terminal Border", cssVar: "--sl-hacker-border", colorValue: "#124c12", description: "Border color" },
+            { name: "Terminal Success", cssVar: "--sl-hacker-success", colorValue: "#00ff41", description: "Success indicator" },
+            { name: "Terminal Warning", cssVar: "--sl-hacker-warning", colorValue: "#ffaa00", description: "Warning indicator" },
+            { name: "Terminal Error", cssVar: "--sl-hacker-error", colorValue: "#ff0040", description: "Error indicator" },
+            { name: "Terminal Info", cssVar: "--sl-hacker-info", colorValue: "#00ccff", description: "Info indicator" },
+          ]}
+        />
+      </PremiumGate>
       </div>
       
       <Footer />

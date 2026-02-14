@@ -236,6 +236,36 @@
   width: fit-content;
 }
 
+/* Premium Resource Cards */
+.resourceCard.premium {
+  border: 2px solid var(--sl-primary);
+  background: linear-gradient(135deg, var(--sl-surface-2) 0%, var(--sl-surface) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.resourceCard.premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sl-primary), var(--sl-primary-hover));
+}
+
+.resourceCard.premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(88, 29, 116, 0.2);
+  border-color: var(--sl-primary-hover);
+}
+
+.resourceBadge.premium {
+  background: linear-gradient(135deg, var(--sl-primary), var(--sl-primary-hover));
+  color: var(--sl-primary-contrast);
+  font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .resourcesGrid,

@@ -3,10 +3,11 @@ import { useSearchParams } from "react-router-dom";
 import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../demos";
 import { useSidebarCollapse } from "../hooks";
 import { menuItems } from "../constants";
-import { Footer, SEO } from "../components";
+import { Footer, SEO, PremiumGate, ComingSoonComponent } from "../components";
+import { useAuth } from "../contexts/AuthContext";
 import "./ComponentsPage.css";
 
-type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips";
+type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips" | "charts" | "tables" | "cards";
 
 export function ComponentsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,6 +15,7 @@ export function ComponentsPage() {
   const [sidebarCollapsed, setSidebarCollapsed] = useSidebarCollapse();
   const [showScrollTop, setShowScrollTop] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState("");
+  const { user } = useAuth();
 
   // Form state for InputsDemo
   const [name, setName] = React.useState("");
@@ -64,11 +66,14 @@ export function ComponentsPage() {
 
   // Component list for filtering
   const allComponents = [
-    { id: "buttons", component: <ButtonsDemo showDetails={false} />, name: "Buttons", keywords: ["button", "click", "action"] },
-    { id: "inputs", component: inputsDemo, name: "Inputs & Forms", keywords: ["input", "form", "text", "select", "checkbox", "switch", "textarea"] },
-    { id: "alerts", component: <AlertsDemo showDetails={false} />, name: "Alerts", keywords: ["alert", "message", "notification", "info", "warning", "danger", "success"] },
-    { id: "badges", component: <BadgesDemo showDetails={false} />, name: "Badges", keywords: ["badge", "tag", "label", "status"] },
-    { id: "tooltips", component: <TooltipsDemo showDetails={false} />, name: "Tooltips", keywords: ["tooltip", "hint", "hover", "popover"] },
+    { id: "buttons", component: <ButtonsDemo showDetails={false} />, name: "Buttons", keywords: ["button", "click", "action"], premium: false, comingSoon: false },
+    { id: "inputs", component: inputsDemo, name: "Inputs & Forms", keywords: ["input", "form", "text", "select", "checkbox", "switch", "textarea"], premium: false, comingSoon: false },
+    { id: "alerts", component: <AlertsDemo showDetails={false} />, name: "Alerts", keywords: ["alert", "message", "notification", "info", "warning", "danger", "success"], premium: false, comingSoon: false },
+    { id: "badges", component: <BadgesDemo showDetails={false} />, name: "Badges", keywords: ["badge", "tag", "label", "status"], premium: false, comingSoon: false },
+    { id: "tooltips", component: <TooltipsDemo showDetails={false} />, name: "Tooltips", keywords: ["tooltip", "hint", "hover", "popover"], premium: false, comingSoon: false },
+    { id: "tables", component: <ComingSoonComponent featureName="Data Tables" />, name: "Data Tables", keywords: ["table", "data", "grid", "sort", "filter", "pagination"], premium: false, comingSoon: true },
+    { id: "charts", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Charts" showUpgrade={true}><div></div></PremiumGate>, name: "Charts", keywords: ["chart", "graph", "data", "visualization", "analytics"], premium: true, comingSoon: false },
+    { id: "cards", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Premium Cards" showUpgrade={true}><div></div></PremiumGate>, name: "Premium Cards", keywords: ["card", "premium", "dashboard", "widget"], premium: true, comingSoon: false },
   ];
 
   // Filter components based on search query
@@ -143,6 +148,19 @@ export function ComponentsPage() {
         {demo === "alerts" && <AlertsDemo showDetails={true} />}
         {demo === "badges" && <BadgesDemo showDetails={true} />}
         {demo === "tooltips" && <TooltipsDemo showDetails={true} />}
+        {demo === "tables" && (
+          <ComingSoonComponent featureName="Data Tables" />
+        )}
+        {demo === "charts" && (
+          <PremiumGate featureName="Charts" showUpgrade={true}>
+           <div></div>
+          </PremiumGate>
+        )}
+        {demo === "cards" && (
+          <PremiumGate featureName="Premium Cards" showUpgrade={true}>
+            <div></div>ad
+          </PremiumGate>
+        )}
       </main>
     );
 
@@ -176,7 +194,7 @@ export function ComponentsPage() {
           {menuItems.map((item) => (
             <button
               key={item.id}
-              className={`sidebarNavItem ${demo === item.id ? "active" : ""}`}
+              className={`sidebarNavItem ${demo === item.id ? "active" : ""} ${item.premium ? "premium" : ""}`}
               onClick={() => setSearchParams({ demo: item.id })}
               title={item.label}
             >
@@ -199,6 +217,16 @@ export function ComponentsPage() {
                 ))}
               </svg>
               <span className="sidebarNavLabel">{item.label}</span>
+              {item.premium && (
+                <span className="sidebarNavPremium">
+                  PREMIUM
+                </span>
+              )}
+              {item.comingSoon && (
+                <span className="sidebarNavComingSoon">
+                  COMING SOON
+                </span>
+              )}
             </button>
           ))}
         </nav>

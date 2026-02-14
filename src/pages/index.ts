@@ -4,3 +4,8 @@ export { DocumentationPage } from "./DocumentationPage";
 export { ColorPalettePage } from "./ColorPalettePage";
 export { IconsPage } from "./IconsPage";
 export { NotFoundPage } from "./NotFoundPage";
+export { PricingPage } from "./PricingPage";
+export { PremiumFeaturesPage } from "./PremiumFeaturesPage";
+export { LoginPage } from "./LoginPage";
+export { SignupPage } from "./SignupPage";
+export { ForgotPasswordPage } from "./ForgotPasswordPage";
