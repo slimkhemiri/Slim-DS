@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import logoImage from "../icons/logo.png";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,18 +10,16 @@ export function Footer() {
       <div className="footerContent">
         <div className="footerSection">
           <div className="footerBrand">
-            <div className="footerLogo">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="8" fill="currentColor" fillOpacity="0.1"/>
-                <path d="M8 12h16M8 16h16M8 20h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
+            <div className="footerLogoContainer">
+              <img src={logoImage} alt="Slim Design System" className="footerLogoImage" />
+              <div className="footerLogoText">
+                <span className="footerLogoTitle">Slim Design</span>
+                <span className="footerLogoSubtitle">Component Library</span>
+              </div>
             </div>
-            <div>
-              <h3 className="footerTitle">Slim Design System</h3>
-              <p className="footerDescription">
-                A modern, accessible design system for building beautiful interfaces.
-              </p>
-            </div>
+            <p className="footerDescription">
+              A modern, accessible design system for building beautiful interfaces.
+            </p>
           </div>
         </div>
 

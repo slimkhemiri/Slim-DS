@@ -31,9 +31,40 @@
   gap: 16px;
 }
 
-.footerLogo {
-  color: var(--sl-primary);
-  margin-bottom: 8px;
+.footerLogoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footerLogoImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.footerLogoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footerLogoTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sl-text);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.footerLogoSubtitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--sl-muted);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
 }
 
 .footerTitle {

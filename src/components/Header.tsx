@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import logoImage from "../icons/logo.png";
 
 interface HeaderProps {
   theme: "light" | "dark" | "hc";
@@ -13,6 +14,15 @@ export function Header({ theme, setTheme }: HeaderProps) {
   const isActive = (path: string) => {
     if (path === "/components") {
       return location.pathname === "/components" || location.pathname.startsWith("/components?");
+    }
+    if (path === "/icons") {
+      return location.pathname === "/icons";
+    }
+    if (path === "/themes") {
+      return location.pathname === "/themes";
+    }
+    if (path === "/resources") {
+      return location.pathname === "/resources";
     }
     return location.pathname === path;
   };
@@ -50,10 +60,7 @@ export function Header({ theme, setTheme }: HeaderProps) {
       <div className="headerLeft">
         <Link to="/" className="logo" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="logoIcon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="currentColor" fillOpacity="0.1"/>
-              <path d="M8 12h16M8 16h16M8 20h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
+            <img src={logoImage} alt="Slim Design System" className="logoImage" />
           </div>
           <div className="logoText">
             <span className="logoTitle">Slim Design</span>
@@ -63,7 +70,7 @@ export function Header({ theme, setTheme }: HeaderProps) {
       </div>
       
       <nav className="headerCenter">
-        <Link
+        {/* <Link
           to="/"
           className={`navLink ${isActive("/") ? "active" : ""}`}
         >
@@ -72,7 +79,7 @@ export function Header({ theme, setTheme }: HeaderProps) {
             <path d="M9 22V12h6v10" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <span>Home</span>
-        </Link>
+        </Link> */}
         
         <Link
           to="/components"
@@ -108,6 +115,40 @@ export function Header({ theme, setTheme }: HeaderProps) {
             <circle cx="12" cy="12" r="3"/>
           </svg>
           <span>Colors</span>
+        </Link>
+        
+        <Link
+          to="/icons"
+          className={`navLink ${isActive("/icons") ? "active" : ""}`}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Icons</span>
+        </Link>
+        
+        <Link
+          to="/themes"
+          className={`navLink ${isActive("/themes") ? "active" : ""}`}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" strokeLinecap="round"/>
+          </svg>
+          <span>Themes</span>
+        </Link>
+        
+        <Link
+          to="/resources"
+          className={`navLink ${isActive("/resources") ? "active" : ""}`}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Resources</span>
         </Link>
       </nav>
       

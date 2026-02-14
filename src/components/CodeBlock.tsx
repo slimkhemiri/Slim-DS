@@ -1,6 +1,7 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./CodeBlock.css";
 
 interface CodeBlockProps {
@@ -13,6 +14,29 @@ interface CodeBlockProps {
 export function CodeBlock({ title, code, language = "bash", defaultExpanded = false }: CodeBlockProps) {
   const [copied, setCopied] = React.useState(false);
   const [expanded, setExpanded] = React.useState(defaultExpanded);
+  const [isDark, setIsDark] = React.useState(true);
+
+  // Detect current theme
+  React.useEffect(() => {
+    const checkTheme = () => {
+      const root = document.documentElement;
+      const theme = root.getAttribute('data-theme') || 'light';
+      setIsDark(theme === 'dark' || theme === 'hc');
+    };
+
+    checkTheme();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleCopy = async () => {
     try {
@@ -38,6 +62,8 @@ export function CodeBlock({ title, code, language = "bash", defaultExpanded = fa
   };
 
   const prismLanguage = languageMap[language] || language;
+  const syntaxTheme = isDark ? vscDarkPlus : prism;
+  const syntaxBg = isDark ? "#1e1e1e" : "#f5f5f5";
 
   return (
     <div className={`codeBlock ${expanded ? 'expanded' : 'collapsed'}`}>
@@ -80,14 +106,14 @@ export function CodeBlock({ title, code, language = "bash", defaultExpanded = fa
       {expanded && (
         <SyntaxHighlighter
           language={prismLanguage}
-          style={vscDarkPlus}
+          style={syntaxTheme}
           customStyle={{
             margin: 0,
             padding: "20px",
             fontSize: "14px",
             lineHeight: "1.8",
             borderRadius: 0,
-            background: "#1e1e1e",
+            background: syntaxBg,
           }}
           codeTagProps={{
             style: {

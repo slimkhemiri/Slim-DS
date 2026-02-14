@@ -102,19 +102,19 @@ function App() {
         </p>
         <CodeBlock
           title="Using Design Tokens"
-          code={`// Import components and tokens
+          code={`// Import components
 import { SlimButton, SlimInput } from '@slimkhemiri/react-design-system';
-import { tokens } from '@slimkhemiri/tokens';
 
 function App() {
   // Access design tokens in JavaScript
-  const primaryColor = tokens.base['--sl-primary'];
-  const spacing = tokens.base['--sl-space-4'];
+  const primaryColor = var('--sl-primary');
+  const spacing = var('--sl-space-4');
+  const background = var('--sl-surface');
   
   return (
     <div style={{ 
       padding: spacing,
-      background: tokens.base['--sl-surface']
+      background: background
     }}>
       <h1 style={{ color: primaryColor }}>
         Welcome to Slim Design
