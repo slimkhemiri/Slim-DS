@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer, ScrollToTop, SkipLink } from "./components";
-import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage, AIDesignPage } from "./pages";
+import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage, AIDesignPage, LicensePage } from "./pages";
 import { IconsPage } from "./pages/IconsPage";
 import { ThemesPage } from "./pages/ThemesPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
@@ -50,6 +50,7 @@ export function App() {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/license" element={<LicensePage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
