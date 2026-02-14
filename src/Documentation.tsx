@@ -650,6 +650,20 @@ document.documentElement.dataset.theme = 'hc';`}
               </div>
             </div>
           </Link>
+
+          <Link to="/resources" style={{ textDecoration: "none" }}>
+            <div style={{ padding: "16px", background: "var(--sl-surface-2)", border: "1px solid var(--sl-border)", borderRadius: "var(--sl-radius-1)", transition: "all 0.2s ease", cursor: "pointer" }} className="resourceCardHover">
+              <div style={{ fontSize: "16px", fontWeight: "var(--sl-font-weight-bold)", marginBottom: "8px", color: "var(--sl-text)" }}>
+                📦 Resources
+              </div>
+              <div style={{ fontSize: "14px", color: "var(--sl-text-light)", marginBottom: "12px" }}>
+                Design resources, templates, and premium features
+              </div>
+              <div style={{ fontSize: "12px", color: "var(--sl-primary)", fontWeight: "var(--sl-font-weight-bold)" }}>
+                See Resources →
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
       </div>
