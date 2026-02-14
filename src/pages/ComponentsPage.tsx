@@ -213,9 +213,171 @@ export function ComponentsPage() {
     }
   };
 
+  // Coming soon components overview data
+  const comingSoonComponentsOverview: Record<string, { title: string; description: string; features: Array<{ icon: string; title: string; description: string }> }> = {
+    "tables": {
+      title: "Data Tables",
+      description: "Powerful and flexible data tables with sorting, filtering, pagination, and search capabilities. Perfect for displaying large datasets in a structured and interactive way.",
+      features: [
+        {
+          icon: "M3 3h18v18H3V3Z",
+          title: "Sorting & Filtering",
+          description: "Sort columns and filter data with ease"
+        },
+        {
+          icon: "M3 9h18M9 3v18",
+          title: "Pagination",
+          description: "Navigate through large datasets efficiently"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Search Functionality",
+          description: "Quick search across all table data"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Responsive Design",
+          description: "Works seamlessly on all screen sizes"
+        }
+      ]
+    },
+    "charts": {
+      title: "Charts",
+      description: "Beautiful and interactive charts for data visualization. Support for line charts, bar charts, pie charts, and more. Perfect for dashboards and analytics.",
+      features: [
+        {
+          icon: "M3 3v18h18",
+          title: "Multiple Chart Types",
+          description: "Line, bar, pie, and area charts"
+        },
+        {
+          icon: "M7 12l4-4 4 4 6-6",
+          title: "Interactive",
+          description: "Hover effects and click interactions"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Customizable",
+          description: "Fully customizable colors and styles"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Responsive",
+          description: "Adapts to any screen size"
+        }
+      ]
+    },
+    "spin": {
+      title: "Spin",
+      description: "Loading spinners and indicators to provide visual feedback during async operations. Multiple styles and sizes available for different use cases.",
+      features: [
+        {
+          icon: "M21 12a9 9 0 1 1-6.219-8.56",
+          title: "Multiple Styles",
+          description: "Various spinner designs and animations"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Customizable Size",
+          description: "Small, medium, and large variants"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Smooth Animations",
+          description: "Smooth and performant animations"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Accessible",
+          description: "ARIA labels and screen reader support"
+        }
+      ]
+    },
+    "drawer": {
+      title: "Drawer",
+      description: "Slide-out panels that appear from the side of the screen. Perfect for navigation menus, filters, settings, and additional content without leaving the current page.",
+      features: [
+        {
+          icon: "M3 12h18M3 6h18M3 18h18",
+          title: "Multiple Positions",
+          description: "Left, right, top, and bottom placement"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Smooth Animations",
+          description: "Smooth slide-in and slide-out transitions"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Backdrop Support",
+          description: "Optional backdrop overlay for focus"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Keyboard Navigation",
+          description: "Full keyboard support and ESC to close"
+        }
+      ]
+    },
+    "notification": {
+      title: "Notification",
+      description: "Toast notifications and alerts that appear temporarily to inform users of actions, errors, or important information. Non-intrusive and dismissible.",
+      features: [
+        {
+          icon: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0",
+          title: "Multiple Variants",
+          description: "Success, error, warning, and info types"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Auto Dismiss",
+          description: "Automatically closes after a set time"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Stack Management",
+          description: "Smart stacking for multiple notifications"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Position Control",
+          description: "Top, bottom, left, or right placement"
+        }
+      ]
+    }
+  };
+
   // Function to render overview for advanced components
   const renderAdvancedComponentOverview = (componentId: string) => {
     const overview = advancedComponentsOverview[componentId];
+    if (!overview) return null;
+
+    return (
+      <div className="advancedComponentOverview">
+        <div className="advancedComponentOverviewContent">
+          <h2 className="advancedComponentOverviewTitle">{overview.title}</h2>
+          <p className="advancedComponentOverviewDescription">{overview.description}</p>
+          <div className="advancedComponentOverviewFeatures">
+            {overview.features.map((feature, index) => (
+              <div key={index} className="advancedComponentOverviewFeature">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d={feature.icon} strokeLinejoin="round" />
+                </svg>
+                <div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Function to render overview for coming soon components
+  const renderComingSoonComponentOverview = (componentId: string) => {
+    const overview = comingSoonComponentsOverview[componentId];
     if (!overview) return null;
 
     return (
@@ -300,10 +462,13 @@ export function ComponentsPage() {
     { id: "geek-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Geek Style" showUpgrade={true}><div></div></PremiumGate>, name: "Geek Style", keywords: ["geek", "style", "tech", "nerd", "code"], premium: true, comingSoon: false },
   ];
 
-  // Filter components based on search query
+  // Filter components based on search query and availability
+  // In "all" view, only show available components (not premium, not coming soon)
+  const availableComponents = allComponents.filter(comp => !comp.premium && !comp.comingSoon);
+  
   const filteredComponents = searchQuery.trim() === ""
-    ? allComponents
-    : allComponents.filter(comp => 
+    ? availableComponents
+    : availableComponents.filter(comp => 
         comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         comp.keywords.some(keyword => keyword.includes(searchQuery.toLowerCase()))
       );
@@ -373,19 +538,34 @@ export function ComponentsPage() {
         {demo === "badges" && <BadgesDemo showDetails={true} />}
         {demo === "tooltips" && <TooltipsDemo showDetails={true} />}
         {demo === "spin" && (
-          <ComingSoonComponent featureName="Spin" />
+          <>
+            {renderComingSoonComponentOverview("spin")}
+            <ComingSoonComponent featureName="Spin" />
+          </>
         )}
         {demo === "drawer" && (
-          <ComingSoonComponent featureName="Drawer" />
+          <>
+            {renderComingSoonComponentOverview("drawer")}
+            <ComingSoonComponent featureName="Drawer" />
+          </>
         )}
         {demo === "notification" && (
-          <ComingSoonComponent featureName="Notification" />
+          <>
+            {renderComingSoonComponentOverview("notification")}
+            <ComingSoonComponent featureName="Notification" />
+          </>
         )}
         {demo === "tables" && (
-          <ComingSoonComponent featureName="Data Tables" />
+          <>
+            {renderComingSoonComponentOverview("tables")}
+            <ComingSoonComponent featureName="Data Tables" />
+          </>
         )}
         {demo === "charts" && (
-          <ComingSoonComponent featureName="Charts" />
+          <>
+            {renderComingSoonComponentOverview("charts")}
+            <ComingSoonComponent featureName="Charts" />
+          </>
         )}
         {demo === "cards" && (
           <PremiumGate featureName="Premium Cards" showUpgrade={true}>
