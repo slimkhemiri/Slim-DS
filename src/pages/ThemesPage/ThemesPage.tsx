@@ -138,6 +138,7 @@ export function ThemesPage() {
             {themes.filter(t => t.status === "coming-soon").map((theme) => (
               <div key={theme.id} className="themeCard coming-soon">
                 <div className="themePreview" style={{ background: theme.preview }}>
+                  <div className="themePremiumBadge">PREMIUM</div>
                   <div className="comingSoonOverlay">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 2L2 7l10 5 10-5-10-5z" strokeLinecap="round" strokeLinejoin="round"/>

@@ -104,6 +104,22 @@
   overflow: hidden;
 }
 
+.themePremiumBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
 .themePreviewContent {
   display: flex;
   flex-direction: column;

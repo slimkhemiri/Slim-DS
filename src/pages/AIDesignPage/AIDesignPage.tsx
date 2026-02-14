@@ -37,12 +37,13 @@ export function AIDesignPage() {
         <div className="aiDesignContainer">
           <div className="aiDesignHeader">
             <div className="aiDesignHeaderIcon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
-                <circle cx="17" cy="7" r="2" fill="currentColor"/>
-                <circle cx="17" cy="12" r="2" fill="currentColor"/>
-                <circle cx="17" cy="17" r="2" fill="currentColor"/>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                <path d="M12 2v20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                <circle cx="17" cy="7" r="2"/>
+                <circle cx="17" cy="12" r="2"/>
+                <circle cx="17" cy="17" r="2"/>
               </svg>
             </div>
             <h1 className="aiDesignTitle">AI Design Component</h1>
