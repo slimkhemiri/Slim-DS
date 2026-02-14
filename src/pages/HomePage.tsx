@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { CodeBlock, Footer, SEO } from "../components";
+import { CodeBlock, Footer, SEO, FreeTrialBanner } from "../components";
 import { useAuth } from "../contexts/AuthContext";
 import "./HomePage.css";
 
@@ -44,7 +44,7 @@ export function HomePage() {
             </a>
             <Link to="/premium">
               <SlimButton variant="secondary" size="lg">
-                Go Premium
+                Premium Features
               </SlimButton>
             </Link>
           </div>
@@ -68,6 +68,9 @@ export function HomePage() {
           )}
         </div>
       </section>
+
+      {/* Free Trial Banner */}
+      <FreeTrialBanner />
 
       {/* Features Grid */}
       <section className="features">
@@ -217,6 +220,93 @@ function App() {
         </div>
       </section>
 
+      {/* AI Design Feature Section */}
+      <section className="aiDesignFeature">
+        <div className="aiDesignFeatureContent">
+          <div className="aiDesignFeatureHeader">
+            <div className="aiDesignFeatureIcon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+                <circle cx="17" cy="7" r="2" fill="currentColor"/>
+                <circle cx="17" cy="12" r="2" fill="currentColor"/>
+                <circle cx="17" cy="17" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <SlimBadge variant="primary" size="sm">Premium</SlimBadge>
+            <h2 className="aiDesignFeatureTitle">AI Design Component</h2>
+            <p className="aiDesignFeatureSubtitle">
+              Transform your ideas into production-ready React components with AI-powered generation
+            </p>
+          </div>
+
+          <div className="aiDesignFeatureOverview">
+            <div className="aiDesignFeatureOverviewContent">
+              <h3 className="aiDesignFeatureOverviewTitle">Transform Ideas into Code</h3>
+              <p className="aiDesignFeatureOverviewDescription">
+                Our AI-powered component generator uses advanced machine learning to understand your requirements
+                and generate production-ready React components with TypeScript, styling, and best practices built-in.
+              </p>
+              <div className="aiDesignFeatureOverviewFeatures">
+                <div className="aiDesignFeatureOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <h4>Instant Generation</h4>
+                    <p>Get your component code in seconds, not hours</p>
+                  </div>
+                </div>
+                <div className="aiDesignFeatureOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <h4>Production Ready</h4>
+                    <p>Code follows industry standards and best practices</p>
+                  </div>
+                </div>
+                <div className="aiDesignFeatureOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 11l3 3L22 4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <h4>TypeScript Support</h4>
+                    <p>Fully typed components with IntelliSense support</p>
+                  </div>
+                </div>
+                <div className="aiDesignFeatureOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+                    <path d="M12 2v20" strokeLinecap="round"/>
+                  </svg>
+                  <div>
+                    <h4>Customizable</h4>
+                    <p>Easy to modify and integrate into your projects</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="aiDesignFeatureActions">
+            <Link to="/ai-design">
+              <SlimButton variant="primary" size="lg">
+                Try AI Design
+              </SlimButton>
+            </Link>
+            <Link to="/pricing">
+              <SlimButton variant="secondary" size="lg">
+                {user?.isPremium ? "Manage Subscription" : "Upgrade to Premium"}
+              </SlimButton>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Premium CTA */}
       <section className="premiumCTA">
         <div className="premiumCTAContent">
@@ -224,10 +314,11 @@ function App() {
           <h2 className="premiumCTATitle">Unlock Premium Features</h2>
           <p className="premiumCTADescription">
             Get access to advanced components, custom themes, API access, priority support, and more.
+            {!user?.isPremium && " Start your 14-day free trial today - no credit card required."}
           </p>
           <Link to="/pricing">
             <SlimButton variant="primary" size="lg">
-              View Pricing Plans
+              {user?.isPremium ? "Manage Subscription" : "View Pricing Plans"}
             </SlimButton>
           </Link>
         </div>

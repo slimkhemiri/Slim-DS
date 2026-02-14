@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { useAuth } from "../contexts/AuthContext";
-import logoImage from "../icons/logo.png";
+import { useAuth } from "../../contexts/AuthContext";
+import logoImage from "../../icons/logo.png";
 
 interface HeaderProps {
   theme: "light" | "dark" | "hc" | "hacker";

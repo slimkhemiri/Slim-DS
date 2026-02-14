@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import "./CheckoutModal.css";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "pk_test_placeholder");

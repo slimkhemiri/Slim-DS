@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
 import { ConfirmationResult } from "firebase/auth";
 import ReactCountryFlag from "react-country-flag";
-import { useAuth } from "../contexts/AuthContext";
-import { countries, getCountryByCode, type Country } from "../constants/countries";
+import { useAuth } from "../../contexts/AuthContext";
+import { countries, getCountryByCode, type Country } from "../../constants/countries";
 import "./PhoneAuth.css";
 
 interface PhoneAuthProps {

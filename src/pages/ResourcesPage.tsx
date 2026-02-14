@@ -202,6 +202,46 @@ export function ResourcesPage() {
           <p className="sectionDescription">
             Unlock exclusive premium resources and features available only to Pro and Enterprise subscribers.
           </p>
+
+          {/* Premium Features Overview - Visible to all users */}
+          <div className="resourcesOverview">
+            <div className="resourcesOverviewContent">
+              <h3 className="resourcesOverviewTitle">Transform Your Development Experience</h3>
+              <p className="resourcesOverviewDescription">
+                Our premium features provide powerful tools and exclusive resources to help you build exceptional applications faster and more efficiently.
+              </p>
+              <div className="resourcesOverviewFeatures">
+                <div className="resourcesOverviewFeature">
+                  <div className="resourcesOverviewFeatureIcon">💚</div>
+                  <div>
+                    <h4>Hacker Mode Colors</h4>
+                    <p>Exclusive green degradation color palette with dark aesthetic</p>
+                  </div>
+                </div>
+                <div className="resourcesOverviewFeature">
+                  <div className="resourcesOverviewFeatureIcon">🎨</div>
+                  <div>
+                    <h4>Premium Themes</h4>
+                    <p>Access to exclusive themes with custom color schemes</p>
+                  </div>
+                </div>
+                <div className="resourcesOverviewFeature">
+                  <div className="resourcesOverviewFeatureIcon">📊</div>
+                  <div>
+                    <h4>Advanced Components</h4>
+                    <p>Charts, premium cards, data tables, and more</p>
+                  </div>
+                </div>
+                <div className="resourcesOverviewFeature">
+                  <div className="resourcesOverviewFeatureIcon">🛠️</div>
+                  <div>
+                    <h4>Developer Tools</h4>
+                    <p>Theme builder, token export, and API access</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           
           <PremiumGate featureName="Premium Resources">
             <div className="resourcesGrid">
@@ -307,6 +347,86 @@ export function ResourcesPage() {
               </Link>
             </div>
           )}
+        </section>
+
+        {/* AI Design Feature Section */}
+        <section className="resourcesSection">
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <h2 className="sectionTitle">AI Design Component</h2>
+            <SlimBadge variant="primary" size="sm">Premium</SlimBadge>
+          </div>
+          <p className="sectionDescription">
+            Generate React components using AI. Describe what you need and get production-ready code instantly.
+          </p>
+
+          {/* AI Design Overview - Visible to all users */}
+          <div className="resourcesOverview">
+            <div className="resourcesOverviewContent">
+              <h3 className="resourcesOverviewTitle">Transform Ideas into Code</h3>
+              <p className="resourcesOverviewDescription">
+                Our AI-powered component generator uses advanced machine learning to understand your requirements and generate production-ready React components with TypeScript, styling, and best practices built-in.
+              </p>
+              <div className="resourcesOverviewFeatures">
+                <div className="resourcesOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <h4>Instant Generation</h4>
+                    <p>Get your component code in seconds, not hours</p>
+                  </div>
+                </div>
+                <div className="resourcesOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <h4>Production Ready</h4>
+                    <p>Code follows industry standards and best practices</p>
+                  </div>
+                </div>
+                <div className="resourcesOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 11l3 3L22 4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <h4>TypeScript Support</h4>
+                    <p>Fully typed components with IntelliSense support</p>
+                  </div>
+                </div>
+                <div className="resourcesOverviewFeature">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+                    <path d="M12 2v20" strokeLinecap="round"/>
+                  </svg>
+                  <div>
+                    <h4>Customizable</h4>
+                    <p>Easy to modify and integrate into your projects</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <PremiumGate featureName="AI Design Component" showUpgrade={true}>
+            <div className="resourcesGrid">
+              <div className="resourceCard premium">
+                <div className="resourceHeader">
+                  <h3 className="resourceTitle">AI Component Generator</h3>
+                  <span className="resourceBadge premium">Premium</span>
+                </div>
+                <p className="resourceDescription">
+                  Describe your component and let AI generate the perfect React code for you. Production-ready components with TypeScript and styling.
+                </p>
+                <Link to="/ai-design" style={{ marginTop: "12px", display: "inline-block" }}>
+                  <SlimButton variant="primary" size="sm">Try AI Design</SlimButton>
+                </Link>
+              </div>
+            </div>
+          </PremiumGate>
         </section>
       </div>
       <Footer />
