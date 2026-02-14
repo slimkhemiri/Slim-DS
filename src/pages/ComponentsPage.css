@@ -371,12 +371,20 @@
     padding: 12px 0;
   }
 
+  /* Hide collapse button on mobile */
+  .sidebarToggle {
+    display: none !important;
+  }
+
   .sidebarHeader {
     padding: 16px 20px;
+    justify-content: flex-start !important;
   }
 
   .sidebarTitle {
     font-size: 16px;
+    opacity: 1 !important;
+    width: auto !important;
   }
 
   .sidebarNav {
@@ -391,21 +399,46 @@
     gap: 8px;
     padding: 12px 16px;
     min-width: fit-content;
+    justify-content: center !important;
   }
 
   .sidebarNavLabel {
     font-size: 13px;
+    opacity: 1 !important;
+    width: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  /* Force expanded state on mobile */
+  .componentsPageSidebar.collapsed {
+    width: 100% !important;
   }
 
   .componentsPageSidebar.collapsed .sidebarTitle {
-    opacity: 1;
-    width: auto;
+    opacity: 1 !important;
+    width: auto !important;
   }
 
   .componentsPageSidebar.collapsed .sidebarNavLabel {
-    opacity: 1;
-    width: auto;
-    transform: none;
+    opacity: 1 !important;
+    width: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  .componentsPageSidebar.collapsed .sidebarHeader {
+    padding: 16px 20px !important;
+    justify-content: flex-start !important;
+  }
+
+  .componentsPageSidebar.collapsed .sidebarNav {
+    padding: 8px 12px !important;
+  }
+
+  .componentsPageSidebar.collapsed .sidebarNavItem {
+    padding: 12px 16px !important;
+    gap: 8px !important;
   }
 
   .componentsPageContent,
