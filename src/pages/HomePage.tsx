@@ -42,7 +42,7 @@ export function HomePage() {
                 View on NPM
               </SlimButton>
             </a>
-            <Link to="/pricing">
+            <Link to="/premium">
               <SlimButton variant="secondary" size="lg">
                 Go Premium
               </SlimButton>

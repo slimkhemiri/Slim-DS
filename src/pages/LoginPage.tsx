@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
-import { SEO, Footer } from "../components";
+import { SEO, Footer, PhoneAuth } from "../components";
 import { useAuth } from "../contexts/AuthContext";
 import "./LoginPage.css";
 
@@ -10,6 +10,7 @@ export function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginMethod, setLoginMethod] = useState<"email" | "phone">("email");
   const [error, setError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
@@ -29,7 +30,7 @@ export function LoginPage() {
     const initGoogleSignIn = () => {
       if (typeof window.google !== 'undefined' && window.google.accounts && googleButtonRef.current) {
         window.google.accounts.id.initialize({
-          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || '367005494935-h2p30jiktaj2rq46qmf0vm5dkjoao7bs.apps.googleusercontent.com',
           callback: async (response: { credential: string }) => {
             setIsGoogleLoading(true);
             try {
@@ -151,71 +152,99 @@ export function LoginPage() {
             </SlimAlert>
           )}
 
-          <form 
-            onSubmit={handleSubmit} 
-            className="loginForm"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !isLoading) {
-                e.preventDefault();
-                performLogin();
-              }
-            }}
-          >
-            <SlimInput
-              label="Email or Username"
-              type="text"
-              value={email}
-              placeholder="slim or your@email.com"
-              onSlimChange={(e) => {
-                setEmail(e.detail);
-                setEmailError(null);
-                setError(null);
-              }}
-              error={emailError || undefined}
-              disabled={isLoading}
-              required
-            />
-
-            <SlimInput
-              label="Password"
-              type="password"
-              value={password}
-              placeholder="Enter your password"
-              onSlimChange={(e) => {
-                setPassword(e.detail);
-                setPasswordError(null);
-                setError(null);
-              }}
-              error={passwordError || undefined}
-              disabled={isLoading}
-              required
-            />
-
-            <div className="loginOptions">
-              <label className="loginRemember">
-                <input type="checkbox" />
-                <span>Remember me</span>
-              </label>
-              <Link to="/forgot-password" className="loginForgot">
-                Forgot password?
-              </Link>
-            </div>
-
-            <SlimButton
+          <div className="loginMethodToggle">
+            <button
               type="button"
-              variant="primary"
-              size="lg"
-              style={{ width: "100%" }}
-              disabled={isLoading}
-              onClick={(e: any) => {
-                e?.preventDefault?.();
-                e?.stopPropagation?.();
-                performLogin();
-              }}
+              className={`loginMethodButton ${loginMethod === "email" ? "active" : ""}`}
+              onClick={() => setLoginMethod("email")}
             >
-              {isLoading ? "Signing in..." : "Sign In"}
-            </SlimButton>
-          </form>
+              Email
+            </button>
+            <button
+              type="button"
+              className={`loginMethodButton ${loginMethod === "phone" ? "active" : ""}`}
+              onClick={() => setLoginMethod("phone")}
+            >
+              Phone
+            </button>
+          </div>
+
+          <div className="loginFormWrapper">
+            {loginMethod === "email" ? (
+              <form 
+                onSubmit={handleSubmit} 
+                className="loginForm loginFormContent"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !isLoading) {
+                    e.preventDefault();
+                    performLogin();
+                  }
+                }}
+              >
+              <SlimInput
+                label="Email or Username"
+                type="text"
+                value={email}
+                placeholder="your@email.com"
+                onSlimChange={(e) => {
+                  setEmail(e.detail);
+                  setEmailError(null);
+                  setError(null);
+                }}
+                error={emailError || undefined}
+                disabled={isLoading}
+                required
+              />
+
+              <SlimInput
+                label="Password"
+                type="password"
+                value={password}
+                placeholder="Enter your password"
+                onSlimChange={(e) => {
+                  setPassword(e.detail);
+                  setPasswordError(null);
+                  setError(null);
+                }}
+                error={passwordError || undefined}
+                disabled={isLoading}
+                required
+              />
+
+              <div className="loginOptions">
+                <label className="loginRemember">
+                  <input type="checkbox" />
+                  <span>Remember me</span>
+                </label>
+                <Link to="/forgot-password" className="loginForgot">
+                  Forgot password?
+                </Link>
+              </div>
+
+              <SlimButton
+                type="button"
+                variant="primary"
+                size="lg"
+                style={{ width: "100%" }}
+                disabled={isLoading}
+                onClick={(e: any) => {
+                  e?.preventDefault?.();
+                  e?.stopPropagation?.();
+                  performLogin();
+                }}
+              >
+                {isLoading ? "Signing in..." : "Sign In"}
+              </SlimButton>
+              </form>
+            ) : (
+              <div className="loginForm loginFormContent">
+                <PhoneAuth
+                  mode="login"
+                  onSuccess={() => navigate("/")}
+                />
+              </div>
+            )}
+          </div>
 
           <div className="loginDivider">
             <span>or</span>

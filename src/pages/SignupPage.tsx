@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
-import { SEO, Footer } from "../components";
+import { SEO, Footer, PhoneAuth } from "../components";
 import { useAuth } from "../contexts/AuthContext";
 import "./SignupPage.css";
 
@@ -12,6 +12,7 @@ export function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [signupMethod, setSignupMethod] = useState<"email" | "phone">("email");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -29,7 +30,7 @@ export function SignupPage() {
     const initGoogleSignIn = () => {
       if (typeof window.google !== 'undefined' && window.google.accounts && googleButtonRef.current) {
         window.google.accounts.id.initialize({
-          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || '367005494935-h2p30jiktaj2rq46qmf0vm5dkjoao7bs.apps.googleusercontent.com',
           callback: async (response: { credential: string }) => {
             setIsGoogleLoading(true);
             try {
@@ -116,7 +117,26 @@ export function SignupPage() {
             </SlimAlert>
           )}
 
-          <form onSubmit={handleSubmit} className="signupForm">
+          <div className="signupMethodToggle">
+            <button
+              type="button"
+              className={`signupMethodButton ${signupMethod === "email" ? "active" : ""}`}
+              onClick={() => setSignupMethod("email")}
+            >
+              Email
+            </button>
+            <button
+              type="button"
+              className={`signupMethodButton ${signupMethod === "phone" ? "active" : ""}`}
+              onClick={() => setSignupMethod("phone")}
+            >
+              Phone
+            </button>
+          </div>
+
+          <div className="signupFormWrapper">
+            {signupMethod === "email" ? (
+              <form onSubmit={handleSubmit} className="signupForm signupFormContent">
             <SlimInput
               label="Full Name"
               type="text"
@@ -182,7 +202,16 @@ export function SignupPage() {
             >
               {isLoading ? "Creating Account..." : "Sign Up"}
             </SlimButton>
-          </form>
+              </form>
+            ) : (
+              <div className="signupForm signupFormContent">
+                <PhoneAuth
+                  mode="signup"
+                  onSuccess={() => navigate("/")}
+                />
+              </div>
+            )}
+          </div>
 
           <div className="signupDivider">
             <span>or</span>

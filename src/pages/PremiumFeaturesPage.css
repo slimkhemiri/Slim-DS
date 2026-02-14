@@ -37,6 +37,95 @@
   margin-top: var(--sl-space-8, 32px);
 }
 
+.premiumFeaturesOverview {
+  background: var(--sl-surface-2, #f5f5f5);
+  border: 2px solid var(--sl-border, #e0e0e0);
+  border-radius: var(--sl-radius-lg, 8px);
+  padding: var(--sl-space-8, 32px);
+  margin-bottom: var(--sl-space-10, 48px);
+}
+
+[data-theme="dark"] .premiumFeaturesOverview {
+  background: var(--sl-surface-2, #1f1f1f);
+  border-color: var(--sl-border, #333333);
+}
+
+.premiumFeaturesOverviewTitle {
+  font-size: var(--sl-font-size-2xl, 24px);
+  font-weight: 700;
+  margin: 0 0 var(--sl-space-3, 12px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .premiumFeaturesOverviewTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.premiumFeaturesOverviewDescription {
+  font-size: var(--sl-font-size-base, 16px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0 0 var(--sl-space-6, 24px) 0;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .premiumFeaturesOverviewDescription {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.premiumFeaturesOverviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--sl-space-6, 24px);
+}
+
+.premiumOverviewItem {
+  background: var(--sl-surface, #ffffff);
+  border: 1px solid var(--sl-border, #e0e0e0);
+  border-radius: var(--sl-radius-md, 6px);
+  padding: var(--sl-space-4, 16px);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+[data-theme="dark"] .premiumOverviewItem {
+  background: var(--sl-surface, #1a1a1a);
+  border-color: var(--sl-border, #333333);
+}
+
+.premiumOverviewItem:hover {
+  border-color: var(--sl-primary, #581d74);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(88, 29, 116, 0.1);
+}
+
+.premiumOverviewIcon {
+  font-size: 32px;
+  margin-bottom: var(--sl-space-2, 8px);
+  line-height: 1;
+}
+
+.premiumOverviewItem h3 {
+  font-size: var(--sl-font-size-base, 16px);
+  font-weight: 600;
+  margin: var(--sl-space-2, 8px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .premiumOverviewItem h3 {
+  color: var(--sl-text, #ffffff);
+}
+
+.premiumOverviewItem p {
+  font-size: var(--sl-font-size-sm, 14px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .premiumOverviewItem p {
+  color: var(--sl-text-secondary, #999999);
+}
+
 .premiumFeaturesCategory {
   margin-bottom: var(--sl-space-12, 64px);
 }
@@ -61,59 +150,45 @@
 
 .premiumFeaturesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--sl-space-6, 24px);
 }
 
-.premiumFeatureCard {
-  background: var(--sl-surface, #ffffff);
+.premiumFeaturesUpgrade {
+  text-align: center;
+  padding: var(--sl-space-10, 48px) var(--sl-space-6, 24px);
+  background: var(--sl-surface-2, #f5f5f5);
   border: 2px solid var(--sl-border, #e0e0e0);
   border-radius: var(--sl-radius-lg, 8px);
-  padding: var(--sl-space-6, 24px);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
+  margin-top: var(--sl-space-10, 48px);
 }
 
-[data-theme="dark"] .premiumFeatureCard {
-  background: var(--sl-surface, #1a1a1a);
+[data-theme="dark"] .premiumFeaturesUpgrade {
+  background: var(--sl-surface-2, #1f1f1f);
   border-color: var(--sl-border, #333333);
 }
 
-.premiumFeatureCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] .premiumFeatureCard:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.premiumFeatureIcon {
-  font-size: 48px;
-  margin-bottom: var(--sl-space-4, 16px);
-  line-height: 1;
-}
-
-.premiumFeatureTitle {
-  font-size: var(--sl-font-size-xl, 20px);
-  font-weight: 600;
-  margin: 0 0 var(--sl-space-2, 8px) 0;
+.premiumFeaturesUpgradeTitle {
+  font-size: var(--sl-font-size-2xl, 24px);
+  font-weight: 700;
+  margin: 0 0 var(--sl-space-3, 12px) 0;
   color: var(--sl-text, #1a1a1a);
 }
 
-[data-theme="dark"] .premiumFeatureTitle {
+[data-theme="dark"] .premiumFeaturesUpgradeTitle {
   color: var(--sl-text, #ffffff);
 }
 
-.premiumFeatureDescription {
+.premiumFeaturesUpgradeDescription {
   font-size: var(--sl-font-size-base, 16px);
   color: var(--sl-text-secondary, #666666);
-  margin: 0 0 var(--sl-space-4, 16px) 0;
+  margin: 0 0 var(--sl-space-6, 24px) 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
-  flex-grow: 1;
 }
 
-[data-theme="dark"] .premiumFeatureDescription {
+[data-theme="dark"] .premiumFeaturesUpgradeDescription {
   color: var(--sl-text-secondary, #999999);
 }

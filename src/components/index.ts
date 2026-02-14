@@ -6,4 +6,6 @@ export { SEO } from "./SEO";
 export { SkipLink } from "./SkipLink";
 export { PremiumGate } from "./PremiumGate";
 export { ComingSoonComponent } from "./ComingSoon";
+export { PremiumFeatureCard } from "./PremiumFeatureCard";
+export { PhoneAuth } from "./PhoneAuth";
 export { CheckoutModal } from "./CheckoutModal";

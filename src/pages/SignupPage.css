@@ -48,10 +48,96 @@
   color: var(--sl-text-secondary, #999999);
 }
 
+.signupMethodToggle {
+  display: flex;
+  gap: var(--sl-space-2, 8px);
+  margin-bottom: var(--sl-space-6, 24px);
+  background: var(--sl-surface);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-2, 6px);
+  padding: 4px;
+}
+
+[data-theme="dark"] .signupMethodToggle {
+  background: var(--sl-surface-2, #1f1f1f);
+}
+
+.signupMethodButton {
+  flex: 1;
+  padding: var(--sl-space-2, 8px) var(--sl-space-4, 16px);
+  background: transparent;
+  border: none;
+  border-radius: var(--sl-radius-1, 4px);
+  font-size: var(--sl-font-size-sm, 14px);
+  font-weight: 500;
+  color: var(--sl-text-secondary, #666666);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+[data-theme="dark"] .signupMethodButton {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.signupMethodButton:hover {
+  color: var(--sl-text, #1a1a1a);
+  background: var(--sl-surface-2, #f5f5f5);
+}
+
+[data-theme="dark"] .signupMethodButton:hover {
+  color: var(--sl-text, #ffffff);
+  background: var(--sl-surface-3, #2a2a2a);
+}
+
+.signupMethodButton {
+  flex: 1;
+  padding: var(--sl-space-2, 8px) var(--sl-space-4, 16px);
+  background: transparent;
+  border: none;
+  border-radius: var(--sl-radius-1, 4px);
+  font-size: var(--sl-font-size-sm, 14px);
+  font-weight: 500;
+  color: var(--sl-text-secondary, #666666);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  position: relative;
+}
+
+.signupMethodButton.active {
+  background: var(--sl-primary, #581d74);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Smooth transition wrapper for form content */
+.signupFormWrapper {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
 .signupForm {
   display: flex;
   flex-direction: column;
   gap: var(--sl-space-4, 16px);
+}
+
+.signupFormContent {
+  animation: fadeInSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .signupTerms {
