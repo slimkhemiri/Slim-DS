@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SlimButton, SlimInput, SlimAlert, SlimBadge } from "@slimkhemiri/react-design-system";
-import { SEO, Footer, PremiumGate } from "../components";
-import { useAuth } from "../contexts/AuthContext";
+import { SEO, Footer, PremiumGate } from "../../components";
+import { useAuth } from "../../contexts/AuthContext";
 import "./AIDesignPage.css";
 
 export function AIDesignPage() {

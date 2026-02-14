@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { SEO, Footer } from "../components";
-import { useAuth } from "../contexts/AuthContext";
-import { CheckoutModal } from "../components";
+import { SEO, Footer, CheckoutModal } from "../../components";
+import { useAuth } from "../../contexts/AuthContext";
 import "./PricingPage.css";
 
 interface Plan {

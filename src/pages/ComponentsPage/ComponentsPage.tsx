@@ -1,10 +1,10 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../demos";
-import { useSidebarCollapse } from "../hooks";
-import { menuItems, menuSections } from "../constants";
-import { Footer, SEO, PremiumGate, ComingSoonComponent } from "../components";
-import { useAuth } from "../contexts/AuthContext";
+import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../../demos";
+import { useSidebarCollapse } from "../../hooks";
+import { menuItems, menuSections } from "../../constants";
+import { Footer, SEO, PremiumGate, ComingSoonComponent } from "../../components";
+import { useAuth } from "../../contexts/AuthContext";
 import "./ComponentsPage.css";
 
 type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips" | "spin" | "drawer" | "notification" | "charts" | "tables" | "cards" | "hack-mode-theme" | "shadcn-like-style" | "cartoon-style" | "illustration-style" | "bootstrap-skeuomorphism" | "glass-style" | "geek-style";
@@ -344,6 +344,32 @@ export function ComponentsPage() {
           description: "Top, bottom, left, or right placement"
         }
       ]
+    },
+    "cards": {
+      title: "Cards",
+      description: "Versatile card components for displaying content in a structured and visually appealing way. Perfect for dashboards, product listings, user profiles, and content organization.",
+      features: [
+        {
+          icon: "M4 4h16v16H4V4Z",
+          title: "Multiple Variants",
+          description: "Basic, elevated, outlined, and filled card styles"
+        },
+        {
+          icon: "M4 8h16M8 4v16",
+          title: "Flexible Content",
+          description: "Support for headers, body, and footer sections"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Interactive States",
+          description: "Hover, focus, and active states for better UX"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Responsive Design",
+          description: "Adapts beautifully to all screen sizes"
+        }
+      ]
     }
   };
 
@@ -452,7 +478,7 @@ export function ComponentsPage() {
     { id: "notification", component: <ComingSoonComponent featureName="Notification" />, name: "Notification", keywords: ["notification", "toast", "alert", "message", "popup"], premium: false, comingSoon: true },
     { id: "tables", component: <ComingSoonComponent featureName="Data Tables" />, name: "Data Tables", keywords: ["table", "data", "grid", "sort", "filter", "pagination"], premium: false, comingSoon: true },
     { id: "charts", component: <ComingSoonComponent featureName="Charts" />, name: "Charts", keywords: ["chart", "graph", "data", "visualization", "analytics"], premium: false, comingSoon: true },
-    { id: "cards", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Premium Cards" showUpgrade={true}><div></div></PremiumGate>, name: "Premium Cards", keywords: ["card", "premium", "dashboard", "widget"], premium: true, comingSoon: false },
+    { id: "cards", component: <ComingSoonComponent featureName="Cards" />, name: "Cards", keywords: ["card", "dashboard", "widget", "container", "panel"], premium: false, comingSoon: true },
     { id: "hack-mode-theme", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}><div></div></PremiumGate>, name: "Hack Mode Theme", keywords: ["hack", "mode", "theme", "dark", "green", "terminal"], premium: true, comingSoon: false },
     { id: "shadcn-like-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="shadcn-like Style" showUpgrade={true}><div></div></PremiumGate>, name: "shadcn-like Style", keywords: ["shadcn", "style", "ui", "components", "modern"], premium: true, comingSoon: false },
     { id: "cartoon-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Cartoon Style" showUpgrade={true}><div></div></PremiumGate>, name: "Cartoon Style", keywords: ["cartoon", "style", "fun", "playful", "animated"], premium: true, comingSoon: false },
@@ -568,9 +594,10 @@ export function ComponentsPage() {
           </>
         )}
         {demo === "cards" && (
-          <PremiumGate featureName="Premium Cards" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderComingSoonComponentOverview("cards")}
+            <ComingSoonComponent featureName="Cards" />
+          </>
         )}
         {demo === "hack-mode-theme" && (
           <>

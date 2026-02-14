@@ -14,7 +14,7 @@ export function Footer() {
             <div className="footerLogoContainer">
               <img src={logoImage} alt="Slim Design System" className="footerLogoImage" />
               <div className="footerLogoText">
-                <span className="footerLogoTitle">Slim Design</span>
+                <span className="footerLogoTitle">Slim Design System</span>
                 <span className="footerLogoSubtitle">Component Library</span>
               </div>
             </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { CodeBlock, Footer, SEO, FreeTrialBanner } from "../components";
-import { useAuth } from "../contexts/AuthContext";
+import { CodeBlock, Footer, SEO, FreeTrialBanner } from "../../components";
+import { useAuth } from "../../contexts/AuthContext";
 import "./HomePage.css";
 
 export function HomePage() {

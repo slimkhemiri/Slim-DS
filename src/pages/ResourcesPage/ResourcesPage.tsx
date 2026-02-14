@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { Footer, PremiumGate } from "../components";
-import { useAuth } from "../contexts/AuthContext";
+import { Footer, PremiumGate } from "../../components";
+import { useAuth } from "../../contexts/AuthContext";
 import "./ResourcesPage.css";
 
 export function ResourcesPage() {

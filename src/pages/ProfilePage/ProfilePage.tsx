@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SlimButton, SlimInput, SlimAlert, SlimBadge } from "@slimkhemiri/react-design-system";
-import { SEO, Footer } from "../components";
-import { useAuth } from "../contexts/AuthContext";
+import { SEO, Footer } from "../../components";
+import { useAuth } from "../../contexts/AuthContext";
 import "./ProfilePage.css";
 
 export function ProfilePage() {

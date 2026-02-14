@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
-import { SEO, Footer } from "../components";
+import { SEO, Footer } from "../../components";
 import "./ForgotPasswordPage.css";
 
 export function ForgotPasswordPage() {

@@ -83,8 +83,10 @@ export function Header({ theme, setTheme }: HeaderProps) {
             <img src={logoImage} alt="Slim Design System logo" className="logoImage" />
           </div>
           <div className="logoText">
-            <span className="logoTitle">Slim Design</span>
-            <span className="logoSubtitle">Component Library</span>
+            <span className="logoTitle">
+              <span className="logoTitleText">Slim</span>
+            </span>
+            <span className="logoSubtitle">Design System</span>
           </div>
         </Link>
       </div>

@@ -113,8 +113,8 @@ export const menuSections: MenuSection[] = [
       },
       {
         id: "cards",
-        label: "Premium Cards",
-        premium: true,
+        label: "Cards",
+        comingSoon: true,
         icon: [
           { d: "M4 4h16v16H4V4Z", strokeLinejoin: "round" },
           { d: "M4 8h16M8 4v16", strokeLinecap: "round" },

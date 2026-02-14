@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton } from "@slimkhemiri/react-design-system";
-import { SEO, Footer } from "../components";
+import { SEO, Footer } from "../../components";
 import "./NotFoundPage.css";
 
 export function NotFoundPage() {
