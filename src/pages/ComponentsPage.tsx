@@ -7,7 +7,7 @@ import { Footer, SEO, PremiumGate, ComingSoonComponent } from "../components";
 import { useAuth } from "../contexts/AuthContext";
 import "./ComponentsPage.css";
 
-type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips" | "charts" | "tables" | "cards" | "hack-mode-theme" | "shadcn-like-style" | "cartoon-style" | "illustration-style" | "bootstrap-skeuomorphism" | "glass-style" | "geek-style";
+type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips" | "spin" | "drawer" | "notification" | "charts" | "tables" | "cards" | "hack-mode-theme" | "shadcn-like-style" | "cartoon-style" | "illustration-style" | "bootstrap-skeuomorphism" | "glass-style" | "geek-style";
 
 export function ComponentsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,6 +26,220 @@ export function ComponentsPage() {
   const [error, setError] = React.useState<string | undefined>(undefined);
 
   const showDetails = demo !== "all";
+
+  // Advanced components overview data
+  const advancedComponentsOverview: Record<string, { title: string; description: string; features: Array<{ icon: string; title: string; description: string }> }> = {
+    "hack-mode-theme": {
+      title: "Hack Mode Theme",
+      description: "Transform your application with a terminal-inspired dark theme featuring green degradation colors. Perfect for developer tools, security applications, and tech-focused interfaces.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Terminal Aesthetics",
+          description: "Dark green color palette inspired by classic terminal interfaces"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Developer Focused",
+          description: "Designed specifically for developer tools and security apps"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Full Theme Support",
+          description: "Complete theme system with all components styled"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Easy Integration",
+          description: "Seamlessly switch between themes with data attributes"
+        }
+      ]
+    },
+    "shadcn-like-style": {
+      title: "shadcn-like Style",
+      description: "Modern, accessible component library style inspired by shadcn/ui. Clean, minimal design with excellent TypeScript support and customization options.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Modern Design",
+          description: "Clean and minimal aesthetic with excellent UX"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Accessibility First",
+          description: "Built with accessibility and keyboard navigation in mind"
+        },
+        {
+          icon: "M12 2v20",
+          title: "TypeScript Ready",
+          description: "Full TypeScript support with IntelliSense"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Highly Customizable",
+          description: "Easy to customize and extend for your needs"
+        }
+      ]
+    },
+    "cartoon-style": {
+      title: "Cartoon Style",
+      description: "Add a playful and fun touch to your application with cartoon-inspired components. Perfect for entertainment apps, games, and creative projects.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Playful Design",
+          description: "Fun and engaging visual style with rounded shapes"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Animated Elements",
+          description: "Smooth animations and transitions for interactivity"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Colorful Palette",
+          description: "Vibrant color scheme perfect for entertainment apps"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Creative Projects",
+          description: "Ideal for games, creative tools, and fun applications"
+        }
+      ]
+    },
+    "illustration-style": {
+      title: "Illustration Style",
+      description: "Artistic and visually rich component style with illustration-inspired design. Perfect for portfolios, creative agencies, and design-focused applications.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Artistic Design",
+          description: "Visually rich components with artistic flair"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Creative Layouts",
+          description: "Unique layouts perfect for portfolios and agencies"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Visual Storytelling",
+          description: "Components designed to tell visual stories"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Design Focused",
+          description: "Perfect for design and creative industry applications"
+        }
+      ]
+    },
+    "bootstrap-skeuomorphism": {
+      title: "Bootstrap Skeuomorphism",
+      description: "Classic 3D realistic design style with depth and shadows. Inspired by early iOS design, perfect for applications that need a tactile, realistic feel.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "3D Realistic",
+          description: "Components with depth, shadows, and realistic textures"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Tactile Feel",
+          description: "Design that feels physical and interactive"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Classic Style",
+          description: "Inspired by early iOS and macOS design language"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Bootstrap Compatible",
+          description: "Works seamlessly with Bootstrap grid and utilities"
+        }
+      ]
+    },
+    "glass-style": {
+      title: "Glass Style",
+      description: "Modern glassmorphism design with frosted glass effects, transparency, and blur. Perfect for modern applications that need a sleek, contemporary look.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Glassmorphism",
+          description: "Frosted glass effects with transparency and blur"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Modern Aesthetic",
+          description: "Sleek and contemporary design language"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Layered Depth",
+          description: "Beautiful depth through layered transparent elements"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Premium Look",
+          description: "High-end visual style for premium applications"
+        }
+      ]
+    },
+    "geek-style": {
+      title: "Geek Theme",
+      description: "Tech-focused design style with code-inspired aesthetics. Perfect for developer tools, tech blogs, and applications targeting tech-savvy audiences.",
+      features: [
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Code Inspired",
+          description: "Design elements inspired by code editors and terminals"
+        },
+        {
+          icon: "M9 11l3 3L22 4",
+          title: "Tech Aesthetic",
+          description: "Perfect for developer tools and tech applications"
+        },
+        {
+          icon: "M12 2v20",
+          title: "Monospace Fonts",
+          description: "Typography choices that evoke programming"
+        },
+        {
+          icon: "M12 2L2 7l10 5 10-5-10-5Z",
+          title: "Developer Friendly",
+          description: "Designed with developers and tech enthusiasts in mind"
+        }
+      ]
+    }
+  };
+
+  // Function to render overview for advanced components
+  const renderAdvancedComponentOverview = (componentId: string) => {
+    const overview = advancedComponentsOverview[componentId];
+    if (!overview) return null;
+
+    return (
+      <div className="advancedComponentOverview">
+        <div className="advancedComponentOverviewContent">
+          <h2 className="advancedComponentOverviewTitle">{overview.title}</h2>
+          <p className="advancedComponentOverviewDescription">{overview.description}</p>
+          <div className="advancedComponentOverviewFeatures">
+            {overview.features.map((feature, index) => (
+              <div key={index} className="advancedComponentOverviewFeature">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d={feature.icon} strokeLinejoin="round" />
+                </svg>
+                <div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   // Scroll to top button visibility
   React.useEffect(() => {
@@ -71,8 +285,11 @@ export function ComponentsPage() {
     { id: "alerts", component: <AlertsDemo showDetails={false} />, name: "Alerts", keywords: ["alert", "message", "notification", "info", "warning", "danger", "success"], premium: false, comingSoon: false },
     { id: "badges", component: <BadgesDemo showDetails={false} />, name: "Badges", keywords: ["badge", "tag", "label", "status"], premium: false, comingSoon: false },
     { id: "tooltips", component: <TooltipsDemo showDetails={false} />, name: "Tooltips", keywords: ["tooltip", "hint", "hover", "popover"], premium: false, comingSoon: false },
+    { id: "spin", component: <ComingSoonComponent featureName="Spin" />, name: "Spin", keywords: ["spin", "spinner", "loader", "loading", "animation"], premium: false, comingSoon: true },
+    { id: "drawer", component: <ComingSoonComponent featureName="Drawer" />, name: "Drawer", keywords: ["drawer", "sidebar", "panel", "slide", "menu"], premium: false, comingSoon: true },
+    { id: "notification", component: <ComingSoonComponent featureName="Notification" />, name: "Notification", keywords: ["notification", "toast", "alert", "message", "popup"], premium: false, comingSoon: true },
     { id: "tables", component: <ComingSoonComponent featureName="Data Tables" />, name: "Data Tables", keywords: ["table", "data", "grid", "sort", "filter", "pagination"], premium: false, comingSoon: true },
-    { id: "charts", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Charts" showUpgrade={true}><div></div></PremiumGate>, name: "Charts", keywords: ["chart", "graph", "data", "visualization", "analytics"], premium: true, comingSoon: false },
+    { id: "charts", component: <ComingSoonComponent featureName="Charts" />, name: "Charts", keywords: ["chart", "graph", "data", "visualization", "analytics"], premium: false, comingSoon: true },
     { id: "cards", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Premium Cards" showUpgrade={true}><div></div></PremiumGate>, name: "Premium Cards", keywords: ["card", "premium", "dashboard", "widget"], premium: true, comingSoon: false },
     { id: "hack-mode-theme", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}><div></div></PremiumGate>, name: "Hack Mode Theme", keywords: ["hack", "mode", "theme", "dark", "green", "terminal"], premium: true, comingSoon: false },
     { id: "shadcn-like-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="shadcn-like Style" showUpgrade={true}><div></div></PremiumGate>, name: "shadcn-like Style", keywords: ["shadcn", "style", "ui", "components", "modern"], premium: true, comingSoon: false },
@@ -155,13 +372,20 @@ export function ComponentsPage() {
         {demo === "alerts" && <AlertsDemo showDetails={true} />}
         {demo === "badges" && <BadgesDemo showDetails={true} />}
         {demo === "tooltips" && <TooltipsDemo showDetails={true} />}
+        {demo === "spin" && (
+          <ComingSoonComponent featureName="Spin" />
+        )}
+        {demo === "drawer" && (
+          <ComingSoonComponent featureName="Drawer" />
+        )}
+        {demo === "notification" && (
+          <ComingSoonComponent featureName="Notification" />
+        )}
         {demo === "tables" && (
           <ComingSoonComponent featureName="Data Tables" />
         )}
         {demo === "charts" && (
-          <PremiumGate featureName="Charts" showUpgrade={true}>
-           <div></div>
-          </PremiumGate>
+          <ComingSoonComponent featureName="Charts" />
         )}
         {demo === "cards" && (
           <PremiumGate featureName="Premium Cards" showUpgrade={true}>
@@ -169,39 +393,60 @@ export function ComponentsPage() {
           </PremiumGate>
         )}
         {demo === "hack-mode-theme" && (
-          <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("hack-mode-theme")}
+            <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
         {demo === "shadcn-like-style" && (
-          <PremiumGate featureName="shadcn-like Style" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("shadcn-like-style")}
+            <PremiumGate featureName="shadcn-like Style" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
         {demo === "cartoon-style" && (
-          <PremiumGate featureName="Cartoon Style" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("cartoon-style")}
+            <PremiumGate featureName="Cartoon Style" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
         {demo === "illustration-style" && (
-          <PremiumGate featureName="Illustration Style" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("illustration-style")}
+            <PremiumGate featureName="Illustration Style" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
         {demo === "bootstrap-skeuomorphism" && (
-          <PremiumGate featureName="Bootstrap Skeuomorphism" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("bootstrap-skeuomorphism")}
+            <PremiumGate featureName="Bootstrap Skeuomorphism" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
         {demo === "glass-style" && (
-          <PremiumGate featureName="Glass Style" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("glass-style")}
+            <PremiumGate featureName="Glass Style" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
         {demo === "geek-style" && (
-          <PremiumGate featureName="Geek Style" showUpgrade={true}>
-            <div></div>
-          </PremiumGate>
+          <>
+            {renderAdvancedComponentOverview("geek-style")}
+            <PremiumGate featureName="Geek Style" showUpgrade={true}>
+              <div></div>
+            </PremiumGate>
+          </>
         )}
       </main>
     );

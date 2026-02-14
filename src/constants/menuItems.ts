@@ -70,6 +70,30 @@ export const menuSections: MenuSection[] = [
         ],
       },
       {
+        id: "spin",
+        label: "Spin",
+        comingSoon: true,
+        icon: [
+          { d: "M21 12a9 9 0 1 1-6.219-8.56", strokeLinecap: "round" },
+        ],
+      },
+      {
+        id: "drawer",
+        label: "Drawer",
+        comingSoon: true,
+        icon: [
+          { d: "M3 12h18M3 6h18M3 18h18", strokeLinecap: "round" },
+        ],
+      },
+      {
+        id: "notification",
+        label: "Notification",
+        comingSoon: true,
+        icon: [
+          { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0", strokeLinecap: "round", strokeLinejoin: "round" },
+        ],
+      },
+      {
         id: "tables",
         label: "Data Tables",
         comingSoon: true,
@@ -81,7 +105,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "charts",
         label: "Charts",
-        premium: true,
+        comingSoon: true,
         icon: [
           { d: "M3 3v18h18", strokeLinecap: "round" },
           { d: "M7 12l4-4 4 4 6-6", strokeLinecap: "round", strokeLinejoin: "round" },
