@@ -105,6 +105,15 @@ export function PricingPage() {
           <p className="pricingSubtitle">
             Select the plan that best fits your needs. All plans include our core features.
           </p>
+          <div className="pricingTrialBanner">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+            </svg>
+            <span className="pricingTrialText">
+              <strong>14-Day Free Trial</strong> on all paid plans • No credit card required
+            </span>
+          </div>
         </div>
 
         <div className="pricingGrid">
@@ -140,6 +149,13 @@ export function PricingPage() {
                     <span className="pricingPriceInterval">/{plan.interval}</span>
                   )}
                 </span>
+                {plan.price > 0 && (
+                  <div className="pricingTrialBadge">
+                    <SlimBadge variant="success" size="sm">
+                      14-Day Free Trial
+                    </SlimBadge>
+                  </div>
+                )}
               </div>
               <ul className="pricingFeatures">
                 {plan.features.map((feature, index) => (

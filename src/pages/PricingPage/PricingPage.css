@@ -33,6 +33,43 @@
   color: var(--sl-text-secondary, #999999);
 }
 
+.pricingTrialBanner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sl-space-2, 8px);
+  margin-top: var(--sl-space-4, 16px);
+  padding: var(--sl-space-3, 12px) var(--sl-space-4, 16px);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--sl-radius-2, 6px);
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .pricingTrialBanner {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.08) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--sl-text, #ffffff);
+}
+
+.pricingTrialBanner svg {
+  flex-shrink: 0;
+  color: #3b82f6;
+}
+
+.pricingTrialText {
+  font-size: var(--sl-font-size-base, 16px);
+  line-height: 1.5;
+}
+
+.pricingTrialText strong {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .pricingTrialText strong {
+  color: #60a5fa;
+}
+
 .pricingGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -125,6 +162,9 @@
   margin-bottom: var(--sl-space-6, 24px);
   padding-bottom: var(--sl-space-6, 24px);
   border-bottom: 1px solid var(--sl-border, #e0e0e0);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sl-space-3, 12px);
 }
 
 [data-theme="dark"] .pricingCardPrice {
@@ -133,6 +173,11 @@
 
 .pricingCard.current .pricingCardPrice {
   border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.pricingTrialBadge {
+  display: flex;
+  justify-content: center;
 }
 
 .pricingPriceAmount {
