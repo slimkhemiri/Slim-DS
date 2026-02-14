@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer, ScrollToTop, SkipLink } from "./components";
-import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage } from "./pages";
+import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage, AIDesignPage } from "./pages";
 import { IconsPage } from "./pages/IconsPage";
 import { ThemesPage } from "./pages/ThemesPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
@@ -38,6 +38,7 @@ export function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/components" element={<ComponentsPage />} />
+              <Route path="/ai-design" element={<AIDesignPage />} />
               <Route path="/documentation" element={<DocumentationPage />} />
               <Route path="/colors" element={<ColorPalettePage />} />
               <Route path="/icons" element={<IconsPage />} />

@@ -10,3 +10,4 @@ export { LoginPage } from "./LoginPage";
 export { SignupPage } from "./SignupPage";
 export { ForgotPasswordPage } from "./ForgotPasswordPage";
 export { ProfilePage } from "./ProfilePage";
+export { AIDesignPage } from "./AIDesignPage";
