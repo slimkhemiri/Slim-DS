@@ -10,3 +10,4 @@ export { PremiumFeatureCard } from "./PremiumFeatureCard/PremiumFeatureCard";
 export { PhoneAuth } from "./PhoneAuth/PhoneAuth";
 export { CheckoutModal } from "./CheckoutModal/CheckoutModal";
 export { FreeTrialBanner } from "./FreeTrialBanner/FreeTrialBanner";
+export { Chatbot } from "./Chatbot/Chatbot";

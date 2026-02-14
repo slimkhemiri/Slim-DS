@@ -19,7 +19,7 @@
   margin: 0 auto;
   padding: 0 32px;
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr);
+  grid-template-columns: 2fr repeat(4, 1fr);
   gap: 48px;
   margin-bottom: 48px;
 }
@@ -186,6 +186,13 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .footerContent {
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 40px;
+  }
+}
+
 @media (max-width: 1024px) {
   .footerContent {
     grid-template-columns: repeat(2, 1fr);

@@ -374,6 +374,58 @@ function App() {
           </a>
         </div>
       </section>
+
+      {/* Contact Section */}
+      <section className="contactSection">
+        <div className="sectionHeader">
+          <h2 className="sectionTitle">Need Help?</h2>
+          <p className="sectionSubtitle">
+            We're here to help you get the most out of Slim Design System
+          </p>
+        </div>
+        <div className="contactGrid">
+          <a href="mailto:support@slimdesign.com" className="contactCard">
+            <div className="contactIcon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M22 6l-10 7L2 6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="contactTitle">Contact Us</h3>
+            <p className="contactDescription">
+              Get in touch with our support team for assistance
+            </p>
+            <span className="contactLink">support@slimdesign.com →</span>
+          </a>
+
+          <a href="mailto:help@slimdesign.com" className="contactCard">
+            <div className="contactIcon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="contactTitle">Help Center</h3>
+            <p className="contactDescription">
+              Find answers to common questions and guides
+            </p>
+            <span className="contactLink">help@slimdesign.com →</span>
+          </a>
+
+          <a href="https://github.com/slimkhemiri/slim-design-system/issues" target="_blank" rel="noopener noreferrer" className="contactCard">
+            <div className="contactIcon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="contactTitle">Report Issue</h3>
+            <p className="contactDescription">
+              Found a bug? Let us know on GitHub
+            </p>
+            <span className="contactLink">Open issue →</span>
+          </a>
+        </div>
+      </section>
       
       <Footer />
     </div>

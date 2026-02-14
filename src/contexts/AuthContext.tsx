@@ -84,11 +84,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     // Test account for demo purposes - only check in frontend
-    // Accept both "slim" and "slim@example.com" as email
-    if ((email === "slim" || email === "slim@example.com") && password === "123") {
+    // Accept both "slim" as email
+    if ((email === "slim") && password === "123") {
       const testUser: User = {
         id: "test_user_slim",
-        email: "slim@example.com",
+        email: "your-email@example.com",
         name: "Slim",
         isPremium: false,
       };

@@ -89,6 +89,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: var(--sl-space-3, 12px);
+}
+
+.checkoutModalTrial {
+  display: flex;
+  align-items: center;
+  gap: var(--sl-space-2, 8px);
+  padding: var(--sl-space-2, 8px) var(--sl-space-3, 12px);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--sl-radius-1, 4px);
+  font-size: var(--sl-font-size-sm, 14px);
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .checkoutModalTrial {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.08) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--sl-text, #ffffff);
+}
+
+.checkoutModalTrial svg {
+  flex-shrink: 0;
+  color: #3b82f6;
+}
+
+.checkoutModalTrialText {
+  line-height: 1.4;
+}
+
+.checkoutModalTrialText strong {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .checkoutModalTrialText strong {
+  color: #60a5fa;
 }
 
 .checkoutModalPlanName {

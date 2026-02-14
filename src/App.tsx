@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Header, Footer, ScrollToTop, SkipLink } from "./components";
+import { Header, Footer, ScrollToTop, SkipLink, Chatbot } from "./components";
 import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage, AIDesignPage, LicensePage, IconsPage, ThemesPage, ResourcesPage } from "./pages";
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -52,6 +52,7 @@ export function App() {
             </Routes>
           </main>
         </div>
+        <Chatbot />
       </BrowserRouter>
     </AuthProvider>
   );

@@ -106,6 +106,15 @@ export function CheckoutModal({ isOpen, onClose, plan, onSuccess }: CheckoutModa
                 ${plan.price}/{plan.interval}
               </span>
             </div>
+            <div className="checkoutModalTrial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinejoin="round"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinejoin="round"/>
+              </svg>
+              <span className="checkoutModalTrialText">
+                <strong>14-Day Free Trial</strong> • No credit card required to start
+              </span>
+            </div>
           </div>
 
           {error && (
