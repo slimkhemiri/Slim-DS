@@ -126,12 +126,6 @@ function App() {
 }`}
           language="tsx"
         />
-
-        <div style={{ marginTop: "16px", padding: "16px", background: "var(--sl-info-soft)", border: "1px solid var(--sl-info)", borderRadius: "var(--sl-radius-1)" }}>
-          <div style={{ fontSize: "14px", color: "var(--sl-text)", lineHeight: "1.6" }}>
-            <strong>💡 Tip:</strong> You can also use CSS variables directly in your styles: <code style={{ background: "var(--sl-surface)", padding: "2px 6px", borderRadius: "4px" }}>var(--sl-primary)</code>. JavaScript tokens are useful when you need dynamic values or calculations.
-          </div>
-        </div>
       </section>
 
       {/* Components */}
