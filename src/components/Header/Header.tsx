@@ -199,11 +199,24 @@ export function Header({ theme, setTheme }: HeaderProps) {
       
       <div className="headerRight">
         {!user ? (
-          <Link to="/pricing" style={{ marginRight: "12px" }}>
-            <SlimButton variant="primary" size="sm">
-              Upgrade
-            </SlimButton>
-          </Link>
+          <>
+            <Link to="/pricing" style={{ marginRight: "12px" }}>
+              <SlimButton variant="primary" size="sm">
+                Upgrade
+              </SlimButton>
+            </Link>
+            <Link to="/login" style={{ marginRight: "12px" }} aria-label="Login">
+              <button
+                className="themeDropdownToggle themeDropdownToggleIcon"
+                style={{ padding: "6px", minWidth: "32px", width: "32px", height: "32px" }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="7" r="4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </Link>
+          </>
         ) : (
           <div className="userMenu" style={{ position: "relative", marginRight: "12px" }}>
             <button
