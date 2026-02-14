@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
 import { useAuth } from "../contexts/AuthContext";
 import "./CheckoutModal.css";
@@ -61,14 +61,15 @@ export function CheckoutModal({ isOpen, onClose, plan, onSuccess }: CheckoutModa
       }
 
       const { sessionId } = await response.json();
-      const stripe = await stripePromise;
+      const stripe: Stripe | null = await stripePromise;
 
       if (!stripe) {
         throw new Error("Stripe failed to load");
       }
 
       // Redirect to Stripe Checkout
-      const { error: stripeError } = await stripe.redirectToCheckout({
+      // Type assertion needed as redirectToCheckout may not be in type definitions
+      const { error: stripeError } = await (stripe as any).redirectToCheckout({
         sessionId,
       });
 
