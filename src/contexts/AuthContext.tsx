@@ -22,6 +22,7 @@ interface AuthContextType {
   loginWithPhone: (phoneNumber: string) => Promise<ConfirmationResult>;
   verifyPhoneCode: (confirmationResult: ConfirmationResult, code: string) => Promise<void>;
   signupWithPhone: (phoneNumber: string) => Promise<ConfirmationResult>;
+  updateUser: (data: { name?: string; email?: string; phone?: string }) => Promise<void>;
   logout: () => void;
   checkPremiumStatus: () => Promise<void>;
 }
@@ -259,6 +260,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return await loginWithPhone(phoneNumber);
   };
 
+  const updateUser = async (data: { name?: string; email?: string; phone?: string }) => {
+    if (!user) {
+      throw new Error("No user logged in");
+    }
+
+    try {
+      // Update user in context and localStorage
+      const updatedUser: User = {
+        ...user,
+        ...data,
+      };
+      setUser(updatedUser);
+      localStorage.setItem("slim_ds_user", JSON.stringify(updatedUser));
+
+      // Optionally, you can make an API call here to update on the server
+      // await fetch(`/api/user/${user.id}`, {
+      //   method: "PATCH",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(data),
+      // });
+    } catch (error) {
+      throw new Error(error instanceof Error ? error.message : "Failed to update user");
+    }
+  };
+
   const logout = () => {
     setUser(null);
     localStorage.removeItem("slim_ds_user");
@@ -276,6 +302,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         loginWithPhone,
         verifyPhoneCode,
         signupWithPhone,
+        updateUser,
         logout,
         checkPremiumStatus,
       }}

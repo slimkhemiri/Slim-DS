@@ -248,8 +248,43 @@
 .sidebarNav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 24px;
   padding: 12px 12px 20px;
+}
+
+.sidebarSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebarSectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sl-text-secondary);
+  padding: 0 16px;
+  margin: 0;
+  transition: opacity 0.3s;
+}
+
+[data-theme="dark"] .sidebarSectionTitle {
+  color: var(--sl-text-secondary);
+}
+
+.componentsPageSidebar.collapsed .sidebarSectionTitle {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarSectionItems {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .sidebarNavItem {

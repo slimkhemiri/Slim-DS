@@ -2,12 +2,12 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../demos";
 import { useSidebarCollapse } from "../hooks";
-import { menuItems } from "../constants";
+import { menuItems, menuSections } from "../constants";
 import { Footer, SEO, PremiumGate, ComingSoonComponent } from "../components";
 import { useAuth } from "../contexts/AuthContext";
 import "./ComponentsPage.css";
 
-type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips" | "charts" | "tables" | "cards";
+type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips" | "charts" | "tables" | "cards" | "hack-mode-theme" | "shadcn-like-style" | "cartoon-style" | "illustration-style" | "bootstrap-skeuomorphism" | "glass-style" | "geek-style";
 
 export function ComponentsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -74,6 +74,13 @@ export function ComponentsPage() {
     { id: "tables", component: <ComingSoonComponent featureName="Data Tables" />, name: "Data Tables", keywords: ["table", "data", "grid", "sort", "filter", "pagination"], premium: false, comingSoon: true },
     { id: "charts", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Charts" showUpgrade={true}><div></div></PremiumGate>, name: "Charts", keywords: ["chart", "graph", "data", "visualization", "analytics"], premium: true, comingSoon: false },
     { id: "cards", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Premium Cards" showUpgrade={true}><div></div></PremiumGate>, name: "Premium Cards", keywords: ["card", "premium", "dashboard", "widget"], premium: true, comingSoon: false },
+    { id: "hack-mode-theme", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}><div></div></PremiumGate>, name: "Hack Mode Theme", keywords: ["hack", "mode", "theme", "dark", "green", "terminal"], premium: true, comingSoon: false },
+    { id: "shadcn-like-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="shadcn-like Style" showUpgrade={true}><div></div></PremiumGate>, name: "shadcn-like Style", keywords: ["shadcn", "style", "ui", "components", "modern"], premium: true, comingSoon: false },
+    { id: "cartoon-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Cartoon Style" showUpgrade={true}><div></div></PremiumGate>, name: "Cartoon Style", keywords: ["cartoon", "style", "fun", "playful", "animated"], premium: true, comingSoon: false },
+    { id: "illustration-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Illustration Style" showUpgrade={true}><div></div></PremiumGate>, name: "Illustration Style", keywords: ["illustration", "style", "artistic", "drawing", "visual"], premium: true, comingSoon: false },
+    { id: "bootstrap-skeuomorphism", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Bootstrap Skeuomorphism" showUpgrade={true}><div></div></PremiumGate>, name: "Bootstrap Skeuomorphism", keywords: ["bootstrap", "skeuomorphism", "3d", "realistic", "depth"], premium: true, comingSoon: false },
+    { id: "glass-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Glass Style" showUpgrade={true}><div></div></PremiumGate>, name: "Glass Style", keywords: ["glass", "style", "morphism", "frosted", "transparent"], premium: true, comingSoon: false },
+    { id: "geek-style", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Geek Style" showUpgrade={true}><div></div></PremiumGate>, name: "Geek Style", keywords: ["geek", "style", "tech", "nerd", "code"], premium: true, comingSoon: false },
   ];
 
   // Filter components based on search query
@@ -158,7 +165,42 @@ export function ComponentsPage() {
         )}
         {demo === "cards" && (
           <PremiumGate featureName="Premium Cards" showUpgrade={true}>
-            <div></div>ad
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "hack-mode-theme" && (
+          <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}>
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "shadcn-like-style" && (
+          <PremiumGate featureName="shadcn-like Style" showUpgrade={true}>
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "cartoon-style" && (
+          <PremiumGate featureName="Cartoon Style" showUpgrade={true}>
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "illustration-style" && (
+          <PremiumGate featureName="Illustration Style" showUpgrade={true}>
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "bootstrap-skeuomorphism" && (
+          <PremiumGate featureName="Bootstrap Skeuomorphism" showUpgrade={true}>
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "glass-style" && (
+          <PremiumGate featureName="Glass Style" showUpgrade={true}>
+            <div></div>
+          </PremiumGate>
+        )}
+        {demo === "geek-style" && (
+          <PremiumGate featureName="Geek Style" showUpgrade={true}>
+            <div></div>
           </PremiumGate>
         )}
       </main>
@@ -191,43 +233,50 @@ export function ComponentsPage() {
         </div>
 
         <nav className="sidebarNav">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              className={`sidebarNavItem ${demo === item.id ? "active" : ""} ${item.premium ? "premium" : ""}`}
-              onClick={() => setSearchParams({ demo: item.id })}
-              title={item.label}
-            >
-              <svg 
-                className="sidebarNavIcon" 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor"
-              >
-                {item.icon.map((path, idx) => (
-                  <path
-                    key={idx}
-                    d={path.d}
-                    strokeWidth={path.strokeWidth || 2}
-                    strokeLinecap={path.strokeLinecap || "round"}
-                    strokeLinejoin={path.strokeLinejoin || "round"}
-                  />
+          {menuSections.map((section) => (
+            <div key={section.id} className="sidebarSection">
+              <h3 className="sidebarSectionTitle">{section.label}</h3>
+              <div className="sidebarSectionItems">
+                {section.items.map((item) => (
+                  <button
+                    key={item.id}
+                    className={`sidebarNavItem ${demo === item.id ? "active" : ""} ${item.premium ? "premium" : ""}`}
+                    onClick={() => setSearchParams({ demo: item.id })}
+                    title={item.label}
+                  >
+                    <svg 
+                      className="sidebarNavIcon" 
+                      width="24" 
+                      height="24" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor"
+                    >
+                      {item.icon.map((path, idx: number) => (
+                        <path
+                          key={idx}
+                          d={path.d}
+                          strokeWidth={path.strokeWidth || 2}
+                          strokeLinecap={path.strokeLinecap || "round"}
+                          strokeLinejoin={path.strokeLinejoin || "round"}
+                        />
+                      ))}
+                    </svg>
+                    <span className="sidebarNavLabel">{item.label}</span>
+                    {item.premium && (
+                      <span className="sidebarNavPremium">
+                        PREMIUM
+                      </span>
+                    )}
+                    {item.comingSoon && (
+                      <span className="sidebarNavComingSoon">
+                        COMING SOON
+                      </span>
+                    )}
+                  </button>
                 ))}
-              </svg>
-              <span className="sidebarNavLabel">{item.label}</span>
-              {item.premium && (
-                <span className="sidebarNavPremium">
-                  PREMIUM
-                </span>
-              )}
-              {item.comingSoon && (
-                <span className="sidebarNavComingSoon">
-                  COMING SOON
-                </span>
-              )}
-            </button>
+              </div>
+            </div>
           ))}
         </nav>
       </div>

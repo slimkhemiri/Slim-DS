@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
 import { useAuth } from "../contexts/AuthContext";
 import logoImage from "../icons/logo.png";
@@ -11,6 +11,7 @@ interface HeaderProps {
 
 export function Header({ theme, setTheme }: HeaderProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = React.useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = React.useState(false);
@@ -219,17 +220,52 @@ export function Header({ theme, setTheme }: HeaderProps) {
               )}
             </button>
             {isUserMenuOpen && (
-              <div className="userMenuDropdown" data-user-email={user.email}>
+              <div className="userMenuDropdown">
+                <Link 
+                  to="/profile" 
+                  className="userMenuProfile"
+                  onClick={() => setIsUserMenuOpen(false)}
+                >
+                  <div className="userMenuProfileAvatar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="12" cy="7" r="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="userMenuProfileInfo">
+                    <div className="userMenuProfileEmail">{user.email}</div>
+                    {user.isPremium && (
+                      <SlimBadge variant="primary" size="sm" style={{ fontSize: "10px", padding: "2px 6px", marginTop: "4px" }}>
+                        Premium
+                      </SlimBadge>
+                    )}
+                  </div>
+                  <svg className="userMenuProfileArrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+                <div className="userMenuDivider"></div>
                 <Link to="/premium" className="userMenuItem" onClick={() => setIsUserMenuOpen(false)}>
-                  Premium Features
+                  <svg className="userMenuItemIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span>Premium Features</span>
                 </Link>
                 {!user.isPremium && (
                   <Link to="/pricing" className="userMenuItem" onClick={() => setIsUserMenuOpen(false)}>
-                    Upgrade to Premium
+                    <svg className="userMenuItemIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 22.02L12 18.77L5.82 22.02L7 14.14L2 9.27L9.91 8.26L12 2Z" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>Upgrade to Premium</span>
                   </Link>
                 )}
                 <button className="userMenuItem" onClick={() => { logout(); setIsUserMenuOpen(false); }}>
-                  Logout
+                  <svg className="userMenuItemIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M16 17l5-5-5-5M21 12H9" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span>Logout</span>
                 </button>
               </div>
             )}

@@ -1,0 +1,130 @@
+.profilePage {
+  min-height: calc(100vh - var(--header-height));
+  padding: var(--sl-space-8, 32px) var(--sl-space-4, 16px);
+  background: var(--sl-surface);
+}
+
+.profileContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: var(--sl-space-8, 32px);
+}
+
+.profileTitle {
+  font-size: var(--sl-font-size-3xl, 28px);
+  font-weight: 700;
+  margin: 0 0 var(--sl-space-2, 8px) 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .profileTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.profileSubtitle {
+  font-size: var(--sl-font-size-base, 16px);
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+}
+
+[data-theme="dark"] .profileSubtitle {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.profileSection {
+  background: var(--sl-surface-2);
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-lg, 8px);
+  padding: var(--sl-space-6, 24px);
+  margin-bottom: var(--sl-space-6, 24px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .profileSection {
+  background: var(--sl-surface, #1a1a1a);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profileSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sl-space-6, 24px);
+}
+
+.profileSectionTitle {
+  font-size: var(--sl-font-size-xl, 20px);
+  font-weight: 600;
+  margin: 0;
+  color: var(--sl-text, #1a1a1a);
+}
+
+[data-theme="dark"] .profileSectionTitle {
+  color: var(--sl-text, #ffffff);
+}
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sl-space-4, 16px);
+}
+
+.profileFormActions {
+  display: flex;
+  gap: var(--sl-space-3, 12px);
+  margin-top: var(--sl-space-2, 8px);
+  justify-content: flex-end;
+}
+
+.profileSubscriptionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sl-space-3, 12px);
+}
+
+.profileSubscriptionStatus,
+.profileSubscriptionDate {
+  display: flex;
+  align-items: center;
+  gap: var(--sl-space-3, 12px);
+}
+
+.profileSubscriptionLabel {
+  font-weight: 600;
+  color: var(--sl-text-secondary, #666666);
+  min-width: 120px;
+}
+
+[data-theme="dark"] .profileSubscriptionLabel {
+  color: var(--sl-text-secondary, #999999);
+}
+
+.profilePaymentMethods {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePaymentMethodsText {
+  color: var(--sl-text-secondary, #666666);
+  margin: 0;
+  font-size: var(--sl-font-size-sm, 14px);
+}
+
+[data-theme="dark"] .profilePaymentMethodsText {
+  color: var(--sl-text-secondary, #999999);
+}
+
+@media (max-width: 640px) {
+  .profileFormActions {
+    flex-direction: column;
+  }
+
+  .profileFormActions button {
+    width: 100%;
+  }
+}

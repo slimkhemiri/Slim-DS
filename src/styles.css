@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color: var(--sl-text);
   background: var(--sl-surface);
   
@@ -503,33 +503,80 @@ body {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  min-width: 220px;
+  min-width: 240px;
   background: var(--sl-surface);
   border: 1px solid var(--sl-border);
   border-radius: var(--sl-radius-2);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 1000;
   overflow: hidden;
-  padding: 6px;
+  padding: 6px 0;
 }
 
-.userMenuDropdown::before {
-  content: attr(data-user-email);
-  display: block;
-  padding: 12px 14px;
-  font-size: 12px;
-  color: var(--sl-text-secondary, #666666);
-  border-bottom: 1px solid var(--sl-border, #e0e0e0);
-  margin-bottom: 4px;
-  font-weight: 500;
+.userMenuProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--sl-surface-2);
+  border-bottom: 1px solid var(--sl-border);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.userMenuProfile:hover {
+  background: var(--sl-surface-3);
+}
+
+.userMenuProfileArrow {
+  margin-left: auto;
+  color: var(--sl-text-secondary);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.userMenuProfile:hover .userMenuProfileArrow {
+  transform: translateX(4px);
+  color: var(--sl-primary);
+}
+
+.userMenuProfileAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sl-primary-soft, rgba(88, 29, 116, 0.1));
+  color: var(--sl-primary, #581d74);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .userMenuProfileAvatar {
+  background: var(--sl-primary-soft, rgba(88, 29, 116, 0.2));
+}
+
+.userMenuProfileInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userMenuProfileEmail {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sl-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  line-height: 1.4;
 }
 
-[data-theme="dark"] .userMenuDropdown::before {
-  color: var(--sl-text-secondary, #999999);
-  border-bottom-color: var(--sl-border, #333333);
+.userMenuDivider {
+  height: 1px;
+  background: var(--sl-border);
+  margin: 4px 0;
 }
 
 [data-theme="dark"] .userMenuDropdown {
@@ -538,7 +585,9 @@ body {
 }
 
 .userMenuItem {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
   padding: 12px 14px;
   background: transparent;
@@ -554,10 +603,20 @@ body {
   text-align: left;
 }
 
+.userMenuItemIcon {
+  flex-shrink: 0;
+  color: var(--sl-text-secondary);
+  transition: color 0.2s;
+}
+
 .userMenuItem:hover {
   background: var(--sl-surface-2);
   color: var(--sl-primary);
   transform: translateX(4px);
+}
+
+.userMenuItem:hover .userMenuItemIcon {
+  color: var(--sl-primary);
 }
 
 /* Legacy styles for compatibility */
