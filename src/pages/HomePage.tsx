@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SlimButton, SlimBadge } from "@slimkhemiri/react-design-system";
-import { CodeBlock, Footer } from "../components";
+import { CodeBlock, Footer, SEO } from "../components";
 import "./HomePage.css";
 
 export function HomePage() {
   return (
-    <div className="homePage">
+    <>
+      <SEO
+        title="Home"
+        description="A modern, accessible, and lightweight design system built for financial applications. Create beautiful user interfaces with pre-built components and design tokens."
+        keywords="design system, component library, React, TypeScript, UI components, accessible design, financial applications"
+      />
+      <div className="homePage">
       {/* Hero Section */}
       <section className="hero">
         <div className="heroContent">
@@ -229,5 +235,6 @@ function App() {
       
       <Footer />
     </div>
+    </>
   );
 }

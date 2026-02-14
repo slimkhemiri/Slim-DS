@@ -56,11 +56,16 @@ export function Header({ theme, setTheme }: HeaderProps) {
   }, [isThemeDropdownOpen]);
 
   return (
-    <header className="header">
+    <header className="header" role="banner">
       <div className="headerLeft">
-        <Link to="/" className="logo" style={{ textDecoration: "none", color: "inherit" }}>
+        <Link 
+          to="/" 
+          className="logo" 
+          style={{ textDecoration: "none", color: "inherit" }}
+          aria-label="Slim Design System - Go to homepage"
+        >
           <div className="logoIcon">
-            <img src={logoImage} alt="Slim Design System" className="logoImage" />
+            <img src={logoImage} alt="Slim Design System logo" className="logoImage" />
           </div>
           <div className="logoText">
             <span className="logoTitle">Slim Design</span>
@@ -69,7 +74,7 @@ export function Header({ theme, setTheme }: HeaderProps) {
         </Link>
       </div>
       
-      <nav className="headerCenter">
+      <nav className="headerCenter" aria-label="Main navigation">
         {/* <Link
           to="/"
           className={`navLink ${isActive("/") ? "active" : ""}`}
@@ -157,8 +162,9 @@ export function Header({ theme, setTheme }: HeaderProps) {
           <button 
             className="themeDropdownToggle"
             onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
-            aria-label="Select theme"
+            aria-label={`Current theme: ${currentTheme.label}. Click to change theme`}
             aria-expanded={isThemeDropdownOpen}
+            aria-haspopup="true"
           >
             <svg className="themeSwitchIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {theme === "dark" ? (
@@ -181,12 +187,19 @@ export function Header({ theme, setTheme }: HeaderProps) {
             </svg>
           </button>
           
-          <div className="themeDropdownMenu">
+          <div 
+            className="themeDropdownMenu"
+            role="menu"
+            aria-label="Theme selection menu"
+          >
             {themeOptions.map((option) => (
               <button
                 key={option.value}
                 className={`themeDropdownItem ${theme === option.value ? 'active' : ''}`}
                 onClick={() => handleThemeSelect(option.value as "light" | "dark" | "hc")}
+                role="menuitem"
+                aria-label={`Switch to ${option.label} theme`}
+                aria-checked={theme === option.value}
               >
                 <span className="themeDropdownItemIcon">{option.icon}</span>
                 <span className="themeDropdownItemLabel">{option.label}</span>

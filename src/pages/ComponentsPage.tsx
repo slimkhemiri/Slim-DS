@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../demos";
 import { useSidebarCollapse } from "../hooks";
 import { menuItems } from "../constants";
-import { Footer } from "../components";
+import { Footer, SEO } from "../components";
 import "./ComponentsPage.css";
 
 type ComponentDemoId = "all" | "buttons" | "inputs" | "alerts" | "badges" | "tooltips";
@@ -147,7 +147,13 @@ export function ComponentsPage() {
     );
 
   return (
-    <div className="componentsPageLayout">
+    <>
+      <SEO
+        title="Components"
+        description="Browse and explore all available components in the Slim Design System. Interactive demos and examples for buttons, inputs, alerts, badges, tooltips, and more."
+        keywords="React components, UI components, buttons, inputs, alerts, badges, tooltips, design system components"
+      />
+      <div className="componentsPageLayout">
       <div className={`componentsPageSidebar ${sidebarCollapsed ? "collapsed" : ""}`}>
         <div className="sidebarHeader">
           <h2 className="sidebarTitle">Components</h2>
@@ -216,5 +222,6 @@ export function ComponentsPage() {
         </button>
       )}
     </div>
+    </>
   );
 }

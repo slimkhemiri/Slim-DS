@@ -1,0 +1,140 @@
+/* 404 Not Found Page Styles */
+
+.notFoundPage {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  background: var(--sl-surface);
+}
+
+.notFoundContent {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+.notFoundIllustration {
+  color: var(--sl-primary);
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+
+.notFoundTitle {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--sl-text);
+  margin: 0;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--sl-primary) 0%, var(--sl-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.notFoundDescription {
+  font-size: 18px;
+  color: var(--sl-text-light);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 500px;
+}
+
+.notFoundActions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.notFoundActions a {
+  text-decoration: none;
+}
+
+.notFoundLinks {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--sl-border);
+  width: 100%;
+}
+
+.notFoundLinksTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sl-text);
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notFoundLinksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.notFoundLinksList li {
+  margin: 0;
+}
+
+.notFoundLinksList a {
+  color: var(--sl-primary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 8px 16px;
+  border-radius: var(--sl-radius-2);
+  display: inline-block;
+}
+
+.notFoundLinksList a:hover {
+  background: var(--sl-primary-soft);
+  color: var(--sl-primary);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .notFoundContent {
+    padding: 80px 20px 60px;
+    gap: 24px;
+  }
+
+  .notFoundTitle {
+    font-size: 36px;
+  }
+
+  .notFoundDescription {
+    font-size: 16px;
+  }
+
+  .notFoundActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .notFoundActions a {
+    width: 100%;
+  }
+
+  .notFoundActions button {
+    width: 100%;
+  }
+
+  .notFoundLinksList {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
