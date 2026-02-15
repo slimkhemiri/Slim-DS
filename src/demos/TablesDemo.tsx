@@ -9,13 +9,13 @@ export function TablesDemo({ showDetails = false }: TablesDemoProps) {
   return (
     <section className="card">
       <div className="cardTitle">
-        <span className="componentNumber">07</span>
+        <span className="componentNumber">06</span>
         Data Tables
       </div>
       
       {showDetails && (
         <p className="componentDescription">
-          Premium data table components with sorting, filtering, and pagination. Perfect for displaying large datasets.
+          Data table components with sorting, filtering, and pagination. Perfect for displaying large datasets.
         </p>
       )}
       

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo } from "../../demos";
+import { ButtonsDemo, InputsDemo, AlertsDemo, BadgesDemo, TooltipsDemo, TablesDemo } from "../../demos";
 import { useSidebarCollapse } from "../../hooks";
 import { menuItems, menuSections } from "../../constants";
 import { Footer, SEO, PremiumGate, ComingSoonComponent } from "../../components";
@@ -476,7 +476,7 @@ export function ComponentsPage() {
     { id: "spin", component: <ComingSoonComponent featureName="Spin" />, name: "Spin", keywords: ["spin", "spinner", "loader", "loading", "animation"], premium: false, comingSoon: true },
     { id: "drawer", component: <ComingSoonComponent featureName="Drawer" />, name: "Drawer", keywords: ["drawer", "sidebar", "panel", "slide", "menu"], premium: false, comingSoon: true },
     { id: "notification", component: <ComingSoonComponent featureName="Notification" />, name: "Notification", keywords: ["notification", "toast", "alert", "message", "popup"], premium: false, comingSoon: true },
-    { id: "tables", component: <ComingSoonComponent featureName="Data Tables" />, name: "Data Tables", keywords: ["table", "data", "grid", "sort", "filter", "pagination"], premium: false, comingSoon: true },
+    { id: "tables", component: <TablesDemo showDetails={false} />, name: "Data Tables", keywords: ["table", "data", "grid", "sort", "filter", "pagination"], premium: false, comingSoon: false },
     { id: "charts", component: <ComingSoonComponent featureName="Charts" />, name: "Charts", keywords: ["chart", "graph", "data", "visualization", "analytics"], premium: false, comingSoon: true },
     { id: "cards", component: <ComingSoonComponent featureName="Cards" />, name: "Cards", keywords: ["card", "dashboard", "widget", "container", "panel"], premium: false, comingSoon: true },
     { id: "hack-mode-theme", component: user?.isPremium ? <div></div> : <PremiumGate featureName="Hack Mode Theme" showUpgrade={true}><div></div></PremiumGate>, name: "Hack Mode Theme", keywords: ["hack", "mode", "theme", "dark", "green", "terminal"], premium: true, comingSoon: false },
@@ -563,12 +563,7 @@ export function ComponentsPage() {
         {demo === "alerts" && <AlertsDemo showDetails={true} />}
         {demo === "badges" && <BadgesDemo showDetails={true} />}
         {demo === "tooltips" && <TooltipsDemo showDetails={true} />}
-        {demo === "spin" && (
-          <>
-            {renderComingSoonComponentOverview("spin")}
-            <ComingSoonComponent featureName="Spin" />
-          </>
-        )}
+        {demo === "tables" && <TablesDemo showDetails={true} />}
         {demo === "drawer" && (
           <>
             {renderComingSoonComponentOverview("drawer")}
@@ -579,12 +574,6 @@ export function ComponentsPage() {
           <>
             {renderComingSoonComponentOverview("notification")}
             <ComingSoonComponent featureName="Notification" />
-          </>
-        )}
-        {demo === "tables" && (
-          <>
-            {renderComingSoonComponentOverview("tables")}
-            <ComingSoonComponent featureName="Data Tables" />
           </>
         )}
         {demo === "charts" && (

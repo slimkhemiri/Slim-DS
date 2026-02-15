@@ -70,6 +70,15 @@ export const menuSections: MenuSection[] = [
         ],
       },
       {
+        id: "tables",
+        label: "Data Tables",
+        comingSoon: false,
+        icon: [
+          { d: "M3 3h18v18H3V3Z", strokeLinejoin: "round" },
+          { d: "M3 9h18M9 3v18", strokeLinecap: "round" },
+        ],
+      },
+      {
         id: "spin",
         label: "Spin",
         comingSoon: true,
@@ -91,15 +100,6 @@ export const menuSections: MenuSection[] = [
         comingSoon: true,
         icon: [
           { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0", strokeLinecap: "round", strokeLinejoin: "round" },
-        ],
-      },
-      {
-        id: "tables",
-        label: "Data Tables",
-        comingSoon: true,
-        icon: [
-          { d: "M3 3h18v18H3V3Z", strokeLinejoin: "round" },
-          { d: "M3 9h18M9 3v18", strokeLinecap: "round" },
         ],
       },
       {
