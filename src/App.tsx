@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer, ScrollToTop, SkipLink, Chatbot } from "./components";
-import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage, AIDesignPage, LicensePage, IconsPage, ThemesPage, ResourcesPage } from "./pages";
+import { HomePage, ComponentsPage, DocumentationPage, ColorPalettePage, NotFoundPage, PricingPage, PremiumFeaturesPage, LoginPage, SignupPage, ForgotPasswordPage, ProfilePage, AIDesignPage, LicensePage, IconsPage, ThemesPage, ResourcesPage, PaymentPage } from "./pages";
 import { AuthProvider } from "./contexts/AuthContext";
 
 export function App() {
@@ -42,6 +42,7 @@ export function App() {
               <Route path="/themes" element={<ThemesPage />} />
               <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/payment" element={<PaymentPage />} />
               <Route path="/premium" element={<PremiumFeaturesPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />

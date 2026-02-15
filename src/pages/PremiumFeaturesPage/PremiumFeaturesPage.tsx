@@ -102,6 +102,12 @@ const premiumFeatures: PremiumFeature[] = [
 
 const overviewFeatures = [
   {
+    icon: "🤖",
+    title: "AI Design Component",
+    description: "Transform ideas into code with our AI-powered component generator. Describe what you need and get production-ready React components with TypeScript, styling, and best practices built-in.",
+    features: ["Instant generation", "Production-ready code", "TypeScript support", "Best practices"],
+  },
+  {
     icon: "💚",
     title: "Hacker Mode Colors",
     description: "Exclusive green degradation color palette with dark aesthetic. Perfect for creating unique, eye-catching interfaces with a hacker-inspired theme.",

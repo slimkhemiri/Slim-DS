@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { loadStripe, Stripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 import { SlimButton, SlimInput, SlimAlert } from "@slimkhemiri/react-design-system";
 import { useAuth } from "../../contexts/AuthContext";
 import "./CheckoutModal.css";
-
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "pk_test_placeholder");
 
 interface Plan {
   id: string;
@@ -23,8 +21,8 @@ interface CheckoutModalProps {
 
 export function CheckoutModal({ isOpen, onClose, plan, onSuccess }: CheckoutModalProps) {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState(user?.email || "");
-  const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -33,53 +31,27 @@ export function CheckoutModal({ isOpen, onClose, plan, onSuccess }: CheckoutModa
     }
   }, [user]);
 
-  const handleCheckout = async () => {
+  const handleContinue = () => {
     if (!email || !email.includes("@")) {
       setError("Please enter a valid email address");
       return;
     }
 
-    setIsProcessing(true);
     setError(null);
-
-    try {
-      // Create checkout session
-      const response = await fetch("/api/checkout/create-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+    onClose();
+    // Navigate to payment page with plan and email info
+    navigate("/payment", {
+      state: {
+        plan: {
+          id: plan.id,
+          name: plan.name,
+          price: plan.price,
           priceId: plan.priceId,
-          email,
-          userId: user?.id,
-          planId: plan.id,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to create checkout session");
-      }
-
-      const { sessionId } = await response.json();
-      const stripe: Stripe | null = await stripePromise;
-
-      if (!stripe) {
-        throw new Error("Stripe failed to load");
-      }
-
-      // Redirect to Stripe Checkout
-      // Type assertion needed as redirectToCheckout may not be in type definitions
-      const { error: stripeError } = await (stripe as any).redirectToCheckout({
-        sessionId,
-      });
-
-      if (stripeError) {
-        throw new Error(stripeError.message);
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
-      setIsProcessing(false);
-    }
+          interval: plan.interval,
+        },
+        email,
+      },
+    });
   };
 
   if (!isOpen) return null;
@@ -130,32 +102,25 @@ export function CheckoutModal({ isOpen, onClose, plan, onSuccess }: CheckoutModa
               value={email}
               placeholder="your@email.com"
               onSlimChange={(e) => setEmail(e.detail)}
-              disabled={isProcessing}
             />
 
             <div className="checkoutModalActions">
               <SlimButton
                 variant="secondary"
                 onClick={onClose}
-                disabled={isProcessing}
                 style={{ flex: 1 }}
               >
                 Cancel
               </SlimButton>
               <SlimButton
                 variant="primary"
-                onClick={handleCheckout}
-                disabled={isProcessing}
+                onClick={handleContinue}
                 style={{ flex: 1 }}
               >
-                {isProcessing ? "Processing..." : "Continue to Payment"}
+                Continue
               </SlimButton>
             </div>
           </div>
-
-          <p className="checkoutModalNote">
-            You'll be redirected to Stripe to complete your payment securely.
-          </p>
         </div>
       </div>
     </div>

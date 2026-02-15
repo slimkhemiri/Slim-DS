@@ -5,6 +5,7 @@ export { ColorPalettePage } from "./ColorPalettePage/ColorPalettePage";
 export { IconsPage } from "./IconsPage/IconsPage";
 export { NotFoundPage } from "./NotFoundPage/NotFoundPage";
 export { PricingPage } from "./PricingPage/PricingPage";
+export { PaymentPage } from "./PaymentPage/PaymentPage";
 export { PremiumFeaturesPage } from "./PremiumFeaturesPage/PremiumFeaturesPage";
 export { LoginPage } from "./LoginPage/LoginPage";
 export { SignupPage } from "./SignupPage/SignupPage";
