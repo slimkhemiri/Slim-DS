@@ -126,25 +126,6 @@ function PaymentForm({ plan, email, onSuccess }: PaymentFormProps) {
         setBillingCountrySearchQuery("");
     };
 
-    // Close phone country dropdown when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (
-                phoneCountryDropdownRef.current &&
-                !phoneCountryDropdownRef.current.contains(e.target as Node) &&
-                phoneCountryButtonRef.current &&
-                !phoneCountryButtonRef.current.contains(e.target as Node)
-            ) {
-                setIsPhoneCountryDropdownOpen(false);
-                setPhoneCountrySearchQuery("");
-            }
-        };
-
-        if (isPhoneCountryDropdownOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => document.removeEventListener("mousedown", handleClickOutside);
-        }
-    }, [isPhoneCountryDropdownOpen]);
 
     // Close billing country dropdown when clicking outside
     useEffect(() => {
@@ -723,7 +704,7 @@ function PaymentForm({ plan, email, onSuccess }: PaymentFormProps) {
                                 </div>
                             </div>
 
-                            <div className="paymentCardCountryTax">
+                            {/* <div className="paymentCardCountryTax">
                                 <label className="paymentCardFieldLabel">Country</label>
                                 <button
                                     ref={billingCountryButtonRef}
@@ -791,7 +772,7 @@ function PaymentForm({ plan, email, onSuccess }: PaymentFormProps) {
                                     </div>
                                 )}
                                 <p className="paymentCardTaxNote">We use this to calculate tax.</p>
-                            </div>
+                            </div> */}
 
                             <div className="paymentCardSaveCheckbox">
                                 <label className="paymentCardSaveLabel">
